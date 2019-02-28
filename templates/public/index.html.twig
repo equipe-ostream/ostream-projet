@@ -1,0 +1,277 @@
+{% extends 'base.html.twig' %}
+{% block title %}Welcome!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('style.css') }}" >
+{% endblock %}
+
+
+{% block body %}
+
+
+
+    <header class = "enTete">
+        <p>
+            <img class = "logo" src = "{{ absolute_url('elementsJpg/LogoBlanc.png') }}" alt = "logo" />
+        </p>
+
+
+        <div class ="Menu"> <!-- Le menu doit être par dessus l'image de vague -->
+            <nav class ="elements"> <!-- pour le menu principal du site -->
+
+                <div> <a href=#flux>Flux</a> </div> <br/> <!-- liens vers des ancres de la MEME page -->
+                <div><a href = "#concept">Concept </a> </div><br/>
+                <div><a href = "#projets"> Projets </a> </div><br/>
+                <div><a href = "#equipe"> Equipe </a> </div><br/>
+                <div><a href = "#histoire"> Histoire </a> </div><br/>
+                <div><a href = "/register"> S'inscrire ou se connecter </a> </div><br/>
+
+
+            </nav>
+        </div>
+
+
+        <p>
+            <img  class = "imageEnTete" src = "{{ asset('elementsJpg/photoVagueFinale.jpg') }}" title = "imageVague" alt = "photoVague"/>
+        </p>
+
+    </header>
+
+
+{% block sidebar %}
+    <nav id="menu" class = "menuGauche">
+      <br/>
+        <p>
+            <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
+        </p>
+        <div class="elementMenuGauche">
+                <div><a href="#flux">Flux</a></div> <br/>
+                <div><a href="#concept">Concept</a></div> <br/>
+                <div><a href="#projets">Projets</a></div> <br/>
+                <div><a href="#equipe">Equipe</a></div> <br/>
+                <div><a href="#histoire">Histoire</a></div> <br/>
+        </div>
+    </nav>
+   {% endblock %}
+
+
+
+
+    <div class = "conteneur1">   <!-- PARTIE ELODIE -->
+        <div>
+            <h1 class = "titreSection1"> Flux </h1>
+            <section id = flux class ="s1"> <!-- simulation du concept : vidéo du flux en image de fond -->
+                <div class = "video">
+
+                    <video  src="{{ asset('videoFlux.mp4') }}" loop="true" autoplay="true" ></video>
+                    TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+
+
+    <div class = "conteneur2">     <!-- PARTIE WILLY -->
+
+        <div>
+            <h1 class = "titreSection2"> Concept </h1>
+                <section id = concept class = "s2">  <!-- Explication du concept en détails -->
+
+                    <p>
+                        <span class = "titreItem"> <?php echo $TitreConceptItem; ?> </span>
+
+                        <figure>
+
+
+                            <table class = "cycle">
+                                <tr>   <!-- première ligne-->
+                                    <td>  <!-- début première cellule -->
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite-haut.png') }}" alt = "fleche" class = "fleche" />
+                                    </td> <!-- fin première cellule -->
+
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Underwater-camera.png') }}" alt = "camera" class = "camera" />
+                                    </td>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche" />
+                                    </td>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Diffusion.png') }}" alt = "diffusion" class = "diffusion" />
+                                    </td>
+                                    <td>
+                                        <!-- ici flèche-->
+                                    </td>
+
+                                </tr>  <!--fin première ligne-->
+
+                                <tr>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Corail.png') }}" alt = "corailC" class = "corailC" title = "Le Corail : blablabla" />
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Conscience.png') }}" alt = "conscience" class = "conscience" />
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche" />
+                                    </td>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Developpement.png') }}" alt = "developpement" class = "developpement" />
+                                    </td>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche.png') }}" alt = "fleche" class = "fleche" />
+                                    </td>
+                                    <td>
+                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Financement.png') }}" alt = "financement" class = "financement" />
+                                    </td>
+                                    <td>
+                                        <!--ici fleche-->
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                            <!--
+                            src : chemin relatif de l'image,
+                            alt : affiché si l'image ne peut se charger,
+                            title : s'affiche quand on passe la souris sur l'image
+                            -->
+
+
+                            <figcaption>Notre cycle de fonctionnement</figcaption> <!--Légende de la figure -->
+                            <br/>
+                        </figure>
+                    </p>
+                </section>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class = "conteneur3">    <!-- PARTIE AURELIE -->
+
+        <div>
+            <h1 class = titreSection3> Projets </h1>
+            <section id = projets class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
+
+                <span> <?php echo $titrePin; ?> </span>
+                <p>
+                    <figure>
+                        <img class = "carte" src = "{{ asset('elementsJpg/carteFondsMarins.jpg') }}" alt = "corail" />
+                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                        <br/>
+                        <!--
+                        Ceci est le texte entourant la carte du monde (à gauche) : varie selon le pin où on a cliqué => boucle if sur le fichier controller ?
+                        src : chemin relatif de l'image,
+                        alt : affiché si l'image ne peut se charger,
+                        title : s'affiche quand on passe la souris sur l'image
+
+                         -->
+                    </figure>
+                </p>
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class = conteneur4>     <!-- PARTIE MARIAM -->
+        <div>
+            <h1 class ="titreSection4"> Equipe </h1>
+            <section  id = equipe class = "s4">
+                <!--faire deux boîtes verticales l'une à côté de l'autre : à gauches les photos cliquables et à droite
+                le profil détaillé correspondant à la personne -->
+
+                <!-- ce qui suit est dans la boîte de droite -->
+                <p>
+                    <figure>
+
+                        <span> <?php echo $nomPersonneEquipe; ?> </span>
+                    </figure>
+                    <br/>
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                </p>
+
+
+            </section>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class = "conteneur5">    <!-- PARTIE FX-->
+        <div>
+            <h1 class ="titreSection5"> Histoire </h1>
+            <section  id = histoire class = "s5">
+                <p>
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
+
+                </p>
+
+
+            </section>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <footer class = "piedPage">  <!--pied de page -->
+        <table>
+            <tr>   <!-- première ligne-->
+                <td>  <!-- début première cellule -->
+                    <strong>Contact</strong>
+                </td> <!-- fin première cellule -->
+            </tr>  <!--fin première ligne-->
+
+            <tr>
+                <td>Adresse</td>
+            </tr>
+
+            <tr>
+                <td>Téléphone</td>
+            </tr>
+
+            <tr>
+                <td><a href = "mailto:elodielucien@gmail.com">Nous écrire</a></td>
+            </tr>
+
+        </table>
+
+    </footer>
+
+
+{% endblock %}
+{% block javascripts %}{% endblock %}
+
+
+
