@@ -83,6 +83,58 @@ class Utilisateur  implements UserInterface
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Preferenceutilisateurordinateur")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Preferenceutilisateurordinateurs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Preferenceutilisateursmartphone")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Preferenceutilisateursmatphones;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Preferenceutilisateurtelevision")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Preferenceutilisateurtelevisions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Live")
+     */
+    private $lives;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Nombredeconnexion")
+     */
+    private $nombredeconnexions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article")
+     */
+    private $articles;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Interview")
+     */
+    private $interviews;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Don")
+     */
+    private $dons;
+
+    public function __construct()
+    {
+        $this->lives = new ArrayCollection();
+        $this->nombredeconnexions = new ArrayCollection();
+        $this->articles = new ArrayCollection();
+        $this->interviews = new ArrayCollection();
+        $this->dons = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -329,5 +381,171 @@ class Utilisateur  implements UserInterface
     public function supportsClass($class)
     {
         // TODO: Implement supportsClass() method.
+    }
+
+    public function getPreferenceutilisateurordinateurs(): ?Preferenceutilisateurordinateur
+    {
+        return $this->Preferenceutilisateurordinateurs;
+    }
+
+    public function setPreferenceutilisateurordinateurs(?Preferenceutilisateurordinateur $Preferenceutilisateurordinateurs): self
+    {
+        $this->Preferenceutilisateurordinateurs = $Preferenceutilisateurordinateurs;
+
+        return $this;
+    }
+
+    public function getPreferenceutilisateursmatphones(): ?Preferenceutilisateursmartphone
+    {
+        return $this->Preferenceutilisateursmatphones;
+    }
+
+    public function setPreferenceutilisateursmatphones(?Preferenceutilisateursmartphone $Preferenceutilisateursmatphones): self
+    {
+        $this->Preferenceutilisateursmatphones = $Preferenceutilisateursmatphones;
+
+        return $this;
+    }
+
+    public function getPreferenceutilisateurtelevisions(): ?Preferenceutilisateurtelevision
+    {
+        return $this->Preferenceutilisateurtelevisions;
+    }
+
+    public function setPreferenceutilisateurtelevisions(?Preferenceutilisateurtelevision $Preferenceutilisateurtelevisions): self
+    {
+        $this->Preferenceutilisateurtelevisions = $Preferenceutilisateurtelevisions;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Live[]
+     */
+    public function getLives(): Collection
+    {
+        return $this->lives;
+    }
+
+    public function addLife(Live $life): self
+    {
+        if (!$this->lives->contains($life)) {
+            $this->lives[] = $life;
+        }
+
+        return $this;
+    }
+
+    public function removeLife(Live $life): self
+    {
+        if ($this->lives->contains($life)) {
+            $this->lives->removeElement($life);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Nombredeconnexion[]
+     */
+    public function getNombredeconnexions(): Collection
+    {
+        return $this->nombredeconnexions;
+    }
+
+    public function addNombredeconnexion(Nombredeconnexion $nombredeconnexion): self
+    {
+        if (!$this->nombredeconnexions->contains($nombredeconnexion)) {
+            $this->nombredeconnexions[] = $nombredeconnexion;
+        }
+
+        return $this;
+    }
+
+    public function removeNombredeconnexion(Nombredeconnexion $nombredeconnexion): self
+    {
+        if ($this->nombredeconnexions->contains($nombredeconnexion)) {
+            $this->nombredeconnexions->removeElement($nombredeconnexion);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Interview[]
+     */
+    public function getInterviews(): Collection
+    {
+        return $this->interviews;
+    }
+
+    public function addInterview(Interview $interview): self
+    {
+        if (!$this->interviews->contains($interview)) {
+            $this->interviews[] = $interview;
+        }
+
+        return $this;
+    }
+
+    public function removeInterview(Interview $interview): self
+    {
+        if ($this->interviews->contains($interview)) {
+            $this->interviews->removeElement($interview);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Don[]
+     */
+    public function getDons(): Collection
+    {
+        return $this->dons;
+    }
+
+    public function addDon(Don $don): self
+    {
+        if (!$this->dons->contains($don)) {
+            $this->dons[] = $don;
+        }
+
+        return $this;
+    }
+
+    public function removeDon(Don $don): self
+    {
+        if ($this->dons->contains($don)) {
+            $this->dons->removeElement($don);
+        }
+
+        return $this;
     }
 }

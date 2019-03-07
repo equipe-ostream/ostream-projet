@@ -21,17 +21,4 @@ class UtilisateurRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Utilisateur::class);
     }
-
-    /**
-     * @return mixed
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
-    public function findLast()
-    {
-        $qb = $this->createQueryBuilder('u');
-        $qb->where('u.statut = 1');
-        $qb->setMaxResults(1);
-        $qb->orderBy('u.id', 'DESC');
-        return $qb->getQuery()->getOneOrNullResult();
-    }
 }
