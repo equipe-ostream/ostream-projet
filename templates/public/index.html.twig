@@ -7,243 +7,243 @@
 {% endblock %}
 
 
+
+
+
 {% block body %}
 
+    <div class="headd " >
+           <!-- <div class ="Menu">  Le menu doit être par dessus l'image de vague-->
+                <img class = "logo" src = "{{ absolute_url('elementsJpg/LogoBlanc.png') }}" alt = "logo" />
+                <nav class ="elements"> <!-- pour le menu principal du site-->
+                    <a href=#flux>Flux</a> <!-- liens vers des ancres de la MEME page-->
+                    <a href = "#concept">Concept </a>
+                    <a href = "#projets"> Projets </a>
+                    <a href = "#equipe"> Equipe </a>
+                    <a href = "#histoire"> Histoire </a>
+                    <a href = "/register"> S'inscrire ou se connecter </a>
+                </nav>
 
-
-    <header class = "enTete">
-        <p>
-            <img class = "logo" src = "{{ absolute_url('elementsJpg/LogoBlanc.png') }}" alt = "logo" />
-        </p>
-
-
-        <div class ="Menu"> <!-- Le menu doit être par dessus l'image de vague -->
-            <nav class ="elements"> <!-- pour le menu principal du site -->
-
-                <div> <a href=#flux>Flux</a> </div> <br/> <!-- liens vers des ancres de la MEME page -->
-                <div><a href = "#concept">Concept </a> </div><br/>
-                <div><a href = "#projets"> Projets </a> </div><br/>
-                <div><a href = "#equipe"> Equipe </a> </div><br/>
-                <div><a href = "#histoire"> Histoire </a> </div><br/>
-                <div><a href = "/register"> S'inscrire ou se connecter </a> </div><br/>
-
-
-            </nav>
+           <!-- </div>-->
         </div>
 
+    <div class="gauche" >
+        {% block sidebar1 %}
 
-        <p>
-            <img  class = "imageEnTete" src = "{{ asset('elementsJpg/photoVagueFinale.jpg') }}" title = "imageVague" alt = "photoVague"/>
-        </p>
+            <nav id="menu" class = "menuGauche">
 
-    </header>
-
-
-{% block sidebar %}
-    <nav id="menu" class = "menuGauche">
-      <br/>
-        <p>
-            <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
-        </p>
-        <div class="elementMenuGauche">
-                <div><a href="#flux">Flux</a></div> <br/>
-                <div><a href="#concept">Concept</a></div> <br/>
-                <div><a href="#projets">Projets</a></div> <br/>
-                <div><a href="#equipe">Equipe</a></div> <br/>
-                <div><a href="#histoire">Histoire</a></div> <br/>
-        </div>
-    </nav>
-   {% endblock %}
-
-
-
-
-    <div class = "conteneur1">   <!-- PARTIE ELODIE -->
-        <div>
-            <h1 class = "titreSection1"> Flux </h1>
-            <section id = flux class ="s1"> <!-- simulation du concept : vidéo du flux en image de fond -->
-                <div class = "video">
-
-                    <video  src="{{ asset('videoFlux.mp4') }}" loop="true" autoplay="true" ></video>
-                    TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte
+                <p>
+                    <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
+                </p>
+                <div class="elementMenuGauche">
+                    <a href="#flux">Flux</a>
+                    <a href="#concept">Concept</a>
+                    <a href="#projets">Projets</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#histoire">Histoire</a>
                 </div>
-            </section>
-        </div>
+            </nav>
+
+        {% endblock %}
 
     </div>
 
+    <div class="mainBody">
+    <!-- PARTIE ELODIE -->
+    <div id = flux class="parties">
 
+        <h1 class = "titreSection1 TitreSection"><span id="SousTitre"> Flux </span></h1>
+        <section  class ="s1"> <!-- simulation du concept : vidéo du flux en image de fond -->
 
-
-    <div class = "conteneur2">     <!-- PARTIE WILLY -->
-
-        <div>
-            <h1 class = "titreSection2"> Concept </h1>
-                <section id = concept class = "s2">  <!-- Explication du concept en détails -->
-
-                    <p>
-                        <span class = "titreItem"> <?php echo $TitreConceptItem; ?> </span>
-
-                        <figure>
-
-
-                            <table class = "cycle">
-                                <tr>   <!-- première ligne-->
-                                    <td>  <!-- début première cellule -->
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite-haut.png') }}" alt = "fleche" class = "fleche" />
-                                    </td> <!-- fin première cellule -->
-
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Underwater-camera.png') }}" alt = "camera" class = "camera" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Diffusion.png') }}" alt = "diffusion" class = "diffusion" />
-                                    </td>
-                                    <td>
-                                        <!-- ici flèche-->
-                                    </td>
-
-                                </tr>  <!--fin première ligne-->
-
-                                <tr>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Corail.png') }}" alt = "corailC" class = "corailC" title = "Le Corail : blablabla" />
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Conscience.png') }}" alt = "conscience" class = "conscience" />
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Developpement.png') }}" alt = "developpement" class = "developpement" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche.png') }}" alt = "fleche" class = "fleche" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Financement.png') }}" alt = "financement" class = "financement" />
-                                    </td>
-                                    <td>
-                                        <!--ici fleche-->
-                                    </td>
-                                </tr>
-
-
-                            </table>
-                            <!--
-                            src : chemin relatif de l'image,
-                            alt : affiché si l'image ne peut se charger,
-                            title : s'affiche quand on passe la souris sur l'image
-                            -->
-
-
-                            <figcaption>Notre cycle de fonctionnement</figcaption> <!--Légende de la figure -->
-                            <br/>
-                        </figure>
-                    </p>
-                </section>
-        </div>
-
+            <div class = "video">
+               <!-- <video  src="" loop="true" autoplay="true" ></video>-->
+                TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte
+            </div>
+        </section>
     </div>
 
+    <!-- PARTIE WILLY -->
+    <div id = concept class="parties">
+        <h1 class = "titreSection2 TitreSection"><span id="SousTitre"> Concept </span> </h1>
+        <center id="titleCycle">Notre cycle de fonctionnement</center>
+        
+        
+        <figure  class = "s2">  <!-- Explication du concept en détails -->
 
+            <table class = "cycle">
+                <tr>   <!-- première ligne-->
 
+                    <td>  <!-- début première cellule -->
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite-haut.png') }}" alt = "fleche" class = "fleche " />
+                    </td> <!-- fin première cellule -->
 
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Underwater-camera.png') }}" alt = "camera" id="camera" onclick="changeTextCamera()" class = "camera cyclephoto" />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Diffusion.png') }}" alt = "diffusion" onclick="changeTextDiffusion()" class = "diffusion cyclephoto" />
+                    </td>
+                    <td>
+                        <!-- ici flèche-->
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
 
-    <div class = "conteneur3">    <!-- PARTIE AURELIE -->
+                </tr>  <!--fin première ligne-->
 
-        <div>
-            <h1 class = titreSection3> Projets </h1>
-            <section id = projets class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
+                <tr>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Corail.png') }}" alt = "corailC" class = "corailC cyclephoto" onclick="changeTextCorail()" title = "Le Corail : blablabla" />
+                    </td>
+                    <td colspan="3" >>Cliques sur une icone pour nous découvrir</td>
 
-                <span> <?php echo $titrePin; ?> </span>
-                <p>
-                    <figure>
-                        <img class = "carte" src = "{{ asset('elementsJpg/carteFondsMarins.jpg') }}" alt = "corail" />
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        <br/>
-                        <!--
-                        Ceci est le texte entourant la carte du monde (à gauche) : varie selon le pin où on a cliqué => boucle if sur le fichier controller ?
-                        src : chemin relatif de l'image,
-                        alt : affiché si l'image ne peut se charger,
-                        title : s'affiche quand on passe la souris sur l'image
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Conscience.png') }}" alt = "conscience" onclick="changeTextConscience()" class = "conscience cyclephoto" />
+                    </td>
 
-                         -->
-                    </figure>
-                </p>
-            </section>
-        </div>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Developpement.png') }}" alt = "developpement" onclick="changeTextDeveloppement()" class = "developpement cyclephoto" />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Financement.png') }}" alt = "financement" onclick="changeTextFinancement()" class = "financement cyclephoto" />
+                    </td>
+                    <td>
+                        <!--ici fleche-->
+                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                </tr>
+            </table> <br/>
+            <!--
+            src : chemin relatif de l'image,
+            alt : affiché si l'image ne peut se charger,
+            title : s'affiche quand on passe la souris sur l'image
+            -->
+
+            <!-- <figcaption>Notre cycle de fonctionnement</figcaption> Légende de la figure -->
+        </figure>
+        </figure>
+
+        <!-- cette partie est consacrée pour l'affichage des informations concernant chaque icon dans le cycle -->
+        <center><div class="cycleInformation" id="cycleInformation">
+
+            </div></center>
+        </section>
     </div>
 
+    <!-- PARTIE AURELIE -->
+    <div id = projets class="parties">
+        <h1 class = "titreSection3 TitreSection"> <span id="SousTitre"> Projets </span> </h1>
+        <section  class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
 
-
-
-
-
-    <div class = conteneur4>     <!-- PARTIE MARIAM -->
-        <div>
-            <h1 class ="titreSection4"> Equipe </h1>
-            <section  id = equipe class = "s4">
-                <!--faire deux boîtes verticales l'une à côté de l'autre : à gauches les photos cliquables et à droite
-                le profil détaillé correspondant à la personne -->
-
-                <!-- ce qui suit est dans la boîte de droite -->
-                <p>
-                    <figure>
-
-                        <span> <?php echo $nomPersonneEquipe; ?> </span>
-                    </figure>
+            <span> <?php echo $titrePin; ?> </span>
+            <p>
+                <figure>
+                    <img class = "carte" src = "{{ asset('elementsJpg/carteFondsMarins.jpg') }}" alt = "corail" />
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
                     <br/>
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                </p>
+                    <!--
+                    Ceci est le texte entourant la carte du monde (à gauche) : varie selon le pin où on a cliqué => boucle if sur le fichier controller ?
+                    src : chemin relatif de l'image,
+                    alt : affiché si l'image ne peut se charger,
+                    title : s'affiche quand on passe la souris sur l'image
 
-
-            </section>
-
-        </div>
+                     -->
+                </figure>
+            </p>
+        </section>
     </div>
 
+    <!-- PARTIE MARIAMA-->
+    <div id = "equipe" class="parties">
+        <h1 class ="titreSection4 TitreSection" ><span id="SousTitre">Equipe </span></h1><br>
+        <section   class = "equipe">
+
+            <div style="width: 80%">
+                <!--  partie pour l'affichage de toutes les informations [lors du clique] concernant une personne,
+                       selon la photo appuyée par l'utilisateur.  -->
+                <div id="Informations" class="Informations">
+                    <img id="maPhoto" class="maPhoto" src="picture1.png" alt="">
+                    <p id="mesInformations" class="mesInformations">
+                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextete
+                        xtetextetexte textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                    </p>
+                </div>
+
+                <!--  partie pour l'affichage de toutes les photos des membres de l'équipe.  -->
+                <div id="photosEquipe" class="photosEquipe">
+                    <table>
+                        <tr>
+                            <td><img src="picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture1()" class="photos"></td>
+                            <td><img src="picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture2()" class="photos"> </td>
+                        </tr>
+                        <tr>
+                            <td><img src="picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture3()" class="photos"></td>
+                            <td><img src="picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture4()" class="photos"></td>
+                        </tr>
+                        <tr>
+                            <td> <img src="picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture5()" class="photos"></td>
+                            <td> <img src="picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture6()" class="photos"></td>
+                        </tr>
+                        <tr>
+                            <td> <img src="picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture7()" class="photos">  </td>
+                            <td> <img src="picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture8()" class="photos">  </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PARTIE FX-->
+    <div id = histoire class="parties">
+        <h1 class ="titreSection5 TitreSection"><span id="SousTitre">Histoire</span></h1>
+        <section   class = "s5">
+            <p>
+                textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                textetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                textetextetextetextetextetextetextetextetextetextetextetextetextetexte
+
+            </p>
 
 
+        </section>
+    </div>
+</div>
 
+    <div class="animaux">
+        {% block sidebar2 %}
 
+            <nav id="menu" class = "menuGauche">
 
-    <div class = "conteneur5">    <!-- PARTIE FX-->
-        <div>
-            <h1 class ="titreSection5"> Histoire </h1>
-            <section  id = histoire class = "s5">
                 <p>
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-
+                    <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
                 </p>
+                <div class="elementMenuGauche">
+                    <a href="#flux">Flux</a>
+                    <a href="#concept">Concept</a>
+                    <a href="#projets">Projets</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#histoire">Histoire</a>
+                </div>
+            </nav>
 
+        {% endblock %}
 
-            </section>
-        </div>
     </div>
-
-
-
-
-
-
 
     <footer class = "piedPage">  <!--pied de page -->
         <table>
@@ -271,7 +271,9 @@
 
 
 {% endblock %}
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('myjava.js') }}"></script>
+{% endblock %}
 
 
 

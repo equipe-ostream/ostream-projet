@@ -1,6 +1,4 @@
-.idea/
-/.idea/
-composer.lock
+.idea
 
 ###> symfony/framework-bundle ###
 .env
@@ -8,7 +6,7 @@ composer.lock
 /.env.local.php
 /.env.*.local
 /public/bundles/
-/public/
+/public/videoFlux.mp4
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
