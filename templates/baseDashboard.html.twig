@@ -14,6 +14,17 @@
         .navbar {
             margin-bottom: 0;
             border-radius: 0;
+            background-color: #1175ad;
+            color : black;
+        }
+
+        .logo
+        {
+            width: 20%;
+        }
+
+        .navbar-brand {
+            position: absolute;
         }
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -28,7 +39,7 @@
 
         /* Set black background color, white text and some padding */
         footer {
-            background-color: #555;
+            background-color: #21a6b2;
             color: white;
             padding: 15px;
         }
@@ -45,7 +56,9 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-inverse">
+
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -53,19 +66,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('home') }}">Logo</a>
         </div>
+
         <div class="collapse navbar-collapse" id="myNavbar">
+
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="{{ path('login') }}">Login</a></li>
                 <li><a href="{{ path('register') }}">Register</a></li>
+                <li><a href="/admin">Admin</a></li>
             </ul>
-            {#
+
+            <ul class = "nav navbar-nav navbar-left">
+                <li><a class="navbar-brand" href="{{ path('home') }}"><img src = "{{ asset('elementsJpg/LogoBlanc.png') }}" alt = "logo" class = "logo " /></a></li>
+            </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Deconnexion</a></li>
             </ul>
-            #}
+
         </div>
     </div>
 </nav>

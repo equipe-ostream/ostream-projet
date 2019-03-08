@@ -29,7 +29,7 @@ class Article
     /**
      * @ORM\Column(type="text")
      */
-    private $contenu;
+    private $body;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -40,6 +40,14 @@ class Article
      * @ORM\Column(type="string", length=255)
      */
     private $auteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="blogPosts")
+     */
+    private $category;
+
+
+
 
     public function getId(): ?int
     {

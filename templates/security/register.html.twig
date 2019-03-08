@@ -3,11 +3,13 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+
+    <h1>Créez votre compte :</h1>
     <div class="row">
         {{ form_start(form, { attr: { class: 'login-form' } }) }}
         <div class="col-md-12">
             <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt">mail_outline</i>
+                <i class="material-icons prefix pt-5 yellowcrypt"></i>
                 {{ form_errors(form.nom) }}
                 {{ form_widget(form.nom) }}
                 <label for="nom">nom</label>
@@ -15,7 +17,7 @@
         </div>
         <div class="col-md-12">
             <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt">mail_outline</i>
+                <i class="material-icons prefix pt-5 yellowcrypt"></i>
                 {{ form_errors(form.email) }}
                 {{ form_widget(form.email) }}
                 <label for="email">email</label>
@@ -23,7 +25,7 @@
         </div>
         <div class="col-md-12">
             <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt">mail_outline</i>
+                <i class="material-icons prefix pt-5 yellowcrypt"></i>
                 {{ form_errors(form.adresse) }}
                 {{ form_widget(form.adresse) }}
                 <label for="adresse">adresse</label>
@@ -31,7 +33,7 @@
         </div>
         <div class="col-md-12">
             <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt">call</i>
+                <i class="material-icons prefix pt-5 yellowcrypt"></i>
                 {{ form_errors(form.telephone) }}
                 {{ form_widget(form.telephone) }}
                 <label for="tel">tel</label>
@@ -39,7 +41,7 @@
         </div>
         <div class="col-md-12">
             <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt">lock_outline</i>
+                <i class="material-icons prefix pt-5 yellowcrypt"></i>
                 <span class="red-text">{{ form_errors(form.password.first) }} </span>
                 {{ form_widget(form.password.first) }}
                 <label for="password">password</label>
@@ -47,7 +49,7 @@
         </div>
         <div class="col-md-12">
             <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt">lock_outline</i>
+                <i class="material-icons prefix pt-5 yellowcrypt"></i>
                 {{ form_widget(form.password.second) }}
                 <label for="passwordConfirm">passwordConfirm</label>
             </div>
