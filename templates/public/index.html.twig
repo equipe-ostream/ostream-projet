@@ -7,9 +7,6 @@
 {% endblock %}
 
 
-
-
-
 {% block body %}
 
     <div class="headd " >
@@ -41,6 +38,9 @@
                     <a href="#projets">Projets</a>
                     <a href="#equipe">Equipe</a>
                     <a href="#histoire">Histoire</a>
+                    <a href="#">Agir</a>
+                    <a href="#">Connexion</a>
+                    <a href="#">Panier</a>
                 </div>
             </nav>
 
@@ -63,9 +63,11 @@
     </div>
 
     <!-- PARTIE WILLY -->
+
     <div id = concept class="parties">
+
         <h1 class = "titreSection2 TitreSection"><span id="SousTitre"> Concept </span> </h1>
-        <center id="titleCycle">Notre cycle de fonctionnement</center>
+
         
         
         <figure  class = "s2">  <!-- Explication du concept en détails -->
@@ -97,8 +99,7 @@
                     <td>
                         <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Corail.png') }}" alt = "corailC" class = "corailC cyclephoto" onclick="changeTextCorail()" title = "Le Corail : blablabla" />
                     </td>
-                    <td colspan="3" >>Cliques sur une icone pour nous découvrir</td>
-
+                    <td colspan="3" ></td>
                     <td>
                         <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Conscience.png') }}" alt = "conscience" onclick="changeTextConscience()" class = "conscience cyclephoto" />
                     </td>
@@ -212,12 +213,91 @@
     <div id = histoire class="parties">
         <h1 class ="titreSection5 TitreSection"><span id="SousTitre">Histoire</span></h1>
         <section   class = "s5">
-            <p>
-                textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                textetextetextetextetextetextetextetextetextetextetextetextetextetexte
 
-            </p>
+
+           <!-- <table class="mytable">
+               <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(110deg);">
+                    <td style="text-align:left;padding-left:370px;padding-bottom: 250px;"><span>Oct 30</span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(110deg);">
+                    <td style="text-align:left;padding-left:370px;padding-bottom: 250px;"><span>31 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(120deg);">
+                    <td style="text-align:right;"><span>31 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(110deg);">
+                    <td style="text-align:left;padding-left:370px;padding-bottom: 250px;"><span> 24 Sept </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(90deg);">
+                    <td style="text-align:left;padding-left:215px;padding-bottom: 50px;"><span>25</span><br/><span> 26 Oct 2014 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(80deg);">
+                    <td style="text-align: left; padding-left: 150px;padding-bottom: 20px;" ><span>27 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(70deg); ">
+                    <td style="padding-bottom: 20px;text-align: left; padding-left: 110px;"><span>28  Nov.</span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(60deg);">
+                    <td style="text-align: left; padding-left: 80px;" ><span>29</span></td>
+                </tr>
+                <tr style="padding-top: 25px;writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(50deg);">
+                    <td style="text-align: left; padding-left: 55px;"><span>30 Déc. 2015</span></td>
+                </tr>
+                <tr style="padding-top: 30px;writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(40deg);">
+                    <td style=" text-align: left; padding-left: 35px;"><span>31</span></td>
+                </tr>
+                <tr style="padding-top: 10px; writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(30deg);">
+                    <td style="text-align: left; padding-left: 15px;"><span>01  Jan.</span></td>
+                </tr>
+                <tr style=" padding-top: 10px; writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(20deg); text-align: left; padding-left: 5px;">
+                    <td><span>02</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left"><span>O3 Février 2016</span></td>
+                </tr>
+            </table>-->
+            <!-- partie calendrier -->
+            <div class="curved-container contai">
+                    <span class="char0">03 Fév 2016</span>
+                    <span class="char1">02</span>
+                    <span class="char2">01 Janvier</span>
+                    <span class="char3">31</span>
+                    <span class="char4">30 Déc 2015</span>
+                    <span class="char5">29</span>
+                    <span class="char6">28 Nov</span>
+                    <span class="char7">27</span>
+                    <span class="char8">26 Oct 2014</span>
+                    <span class="char9">25</span>
+                    <span class="char10">24 Sept</span>
+                    <span class="char11">Nov</span>
+                    <span class="char12">31</span>
+                    <span class="char13">30 Oct</span>
+                    <span class="char14">29</span>
+                    <span class="char15">28 Sept 2019</span>
+                    <span class="char16">27</span>
+                    <span class="char17">26 Août </span>
+                    <span class="char18">25</span>
+                <span class="char19">24 Juill 2018</span>
+            </div>
+            <!-- dates importantes côté gauche -->
+            <div id="dtGauche">
+                <h5>Dates Importantes :</h5>
+                <p id="DtImpGauche"> - 25/01/15 : texte texte texte texte <br/>
+                - 31/02/15 : texte texte texte <br/>
+                    - 05/04/16 : texte texte texte texte texte
+                </p>
+
+            </div>
+            <!-- dates importantes côté droit -->
+            <div id="dtDroite">
+                <h5>Dates Importantes :</h5>
+                <p id="DtImpDroite"> - 04/02/19 : texte texte texte texte <br/>
+                    - 23/12/120 : texte texte texte <br/>
+                    - 02/11/21 : texte texte texte texte texte
+                </p>
+            </div>
+
+
 
 
         </section>
@@ -227,18 +307,46 @@
     <div class="animaux">
         {% block sidebar2 %}
 
-            <nav id="menu" class = "menuGauche">
-
-                <p>
-                    <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
-                </p>
-                <div class="elementMenuGauche">
-                    <a href="#flux">Flux</a>
-                    <a href="#concept">Concept</a>
-                    <a href="#projets">Projets</a>
-                    <a href="#equipe">Equipe</a>
-                    <a href="#histoire">Histoire</a>
+            <nav id="menu" class = "">
+                <!-- partie de 0m à 200m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/._zone 2_6 [espèce 1_23] chrysaora hysoscella.png')}}" alt = "chrysaora hysoscella" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 2_23] zanclus cornutus.png') }}" alt = "zanclus cornutus" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 3_23] Macrocystis Pyrifera.png') }}" alt = "Macrocystis Pyrifera" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 4_23] Balaenoptera Musculus.png') }}" alt = "Balaenoptera Musculus" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 5_23] carcharodon carcharias.png') }}" alt = "carcharodon carcharias" />
+                 </div>
+                <!--  partie de 200m à 1000m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 6_23] squatina australis.png') }}" alt = "squatina australis" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 7_23] Galatea Squamifera.png') }}" alt = "Galatea Squamifera" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 8_23] Vampyroteuthis Infernalis.png') }}" alt = "Vampyroteuthis Infernalis" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 9_23] Idiacanthus Fasciola.png') }}" alt = "Idiacanthus Fasciola" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 10_23] Bathocyroe  Fosteri.png') }}" alt = "Bathocyroe  Fosteri" />
                 </div>
+                <!-- partie de 1000m à 2000m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 11_23] Melanocetus johnsonii.png') }}" alt = "Melanocetus johnsonii" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 12_23] Architeuthis Dux.png') }}" alt = "Architeuthis Dux" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 13_23] Benthoctopus Levis.png') }}" alt = "Benthoctopus Levis" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 14_23] Physeter Macrocephalus.png') }}" alt = "Physeter Macrocephalus" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 15_23] Myxinidae.png') }}" alt = "Myxinidae" />
+                </div>
+                <!-- partie de 2000m à 6000m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 16_23] euplectelles.png') }}" alt = "euplectelles" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 17_23] gorgonocephalus.png') }}" alt = "gorgonocephalus" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 18_23] bathypterois grallator.png') }}" alt = "bathypterois grallator" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 19_23] Hydrolagus Alberti.png') }}" alt = "Hydrolagus Alberti" />
+                </div>
+                <!-- partie de 6000m vers le bas de la page  -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 20_23] hirondellea gigas.png') }}" alt = "hirondellea gigas" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 21_23] elpidia glacialis.png') }}" alt = "elpidia glacialis" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 22_23] scotoplanes globosa.png') }}" alt = "scotoplanes globosa" />
+                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 23_23] Nemanthus Annamensis.png') }}" alt = "Nemanthus Annamensis" />
+                </div>
+
             </nav>
 
         {% endblock %}
@@ -272,7 +380,88 @@
 
 {% endblock %}
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('myjava.js') }}"></script>
+    <script type="text/javascript">
+
+        //fonction permettera de changer la photo
+        function changePhoto(source)
+        {
+            //récupérer l'emplacement pour afficher la photo lors du clique
+            var ind= document.getElementsByClassName("maPhoto")[0];
+
+            //affecter la source de la photo cliquée
+            ind.src=source;
+        }
+
+        //les fonctions qui permetteront de changer les informations selon chaque personne dans la photo
+        function changeTextPicture1(source) {
+            document.getElementById("mesInformations").innerHTML="Hello my name's mariam";
+        }
+
+        function changeTextPicture2(source) {
+            document.getElementById("mesInformations").innerHTML="Hello my name's houda";
+        }
+
+        function changeTextPicture3(source) {
+            document.getElementById("mesInformations").innerHTML="Hi I am Jack";
+        }
+
+        function changeTextPicture4(source) {
+            document.getElementById("mesInformations").innerHTML="Alright alright";
+        }
+
+        function changeTextPicture5(source) {
+            document.getElementById("mesInformations").innerHTML="NO NO NO NO";
+        }
+
+        function changeTextPicture6(source) {
+            document.getElementById("mesInformations").innerHTML="HAHAHAHA OK I AM WRITING THS JUST TO PRESENT MYSELF ";
+        }
+
+        function changeTextPicture7(source) {
+            document.getElementById("mesInformations").innerHTML="I m happy to be one of you, your amazing team, I am honoured, because I was always obsessed with ocean , ocean is my home";
+        }
+
+        function changeTextPicture8(source) {
+            document.getElementById("mesInformations").innerHTML="I am  the boss";
+        }
+
+        //les fonctions qui permetteront de changer le paragraphe selon l'icone cliqué [ partie cycle de fonctionnement ]
+        function changeTextCamera()
+        {
+            document.getElementById("cycleInformation").innerHTML="I am a camera";
+        }
+
+        function changeTextCorail() {
+            document.getElementById("cycleInformation").innerHTML="Du blabla";
+        }
+
+        function changeTextDiffusion() {
+            document.getElementById("cycleInformation").innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed " +
+                "do eiusmod " +
+                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc" +
+                "o laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess" +
+                "e cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui offi" +
+                "cia deserunt mollit anim id est laborum.";
+        }
+
+        function changeTextConscience() {
+            document.getElementById("cycleInformation").innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed " +
+                "do eiusmod " +
+                "tempor incididunt ut labore ";
+        }
+
+        function changeTextDeveloppement() {
+            document.getElementById("cycleInformation").innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed " +
+                "do eiusmod " +
+                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc" +
+                "o laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess" +
+                "e cillum dolore eu fugiat nulla pariat";
+        }
+
+        function changeTextFinancement() {
+            document.getElementById("cycleInformation").innerHTML="Du blabla";
+        }
+    </script>
 {% endblock %}
 
 

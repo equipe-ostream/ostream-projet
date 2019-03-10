@@ -1,13 +1,13 @@
 
 //fonction permettera de changer la photo
- function changePhoto(source)
+function changePhoto(source)
 {
         //récupérer l'emplacement pour afficher la photo lors du clique
         var ind= document.getElementsByClassName("maPhoto")[0];
 
         //affecter la source de la photo cliquée
         ind.src=source;
-    }
+}
 
 //les fonctions qui permetteront de changer les informations selon chaque personne dans la photo
 function changeTextPicture1(source) {
