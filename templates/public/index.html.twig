@@ -12,6 +12,13 @@
     <div class="headd " >
            <!-- <div class ="Menu">  Le menu doit être par dessus l'image de vague-->
                 <img class = "logo" src = "{{ absolute_url('elementsJpg/LogoBlanc.png') }}" alt = "logo" />
+
+                <div class="rechercher" style="display: inline-block; padding-left:  540px; padding-bottom: 30px;">
+                        <input type="text" class="TermeRecherche" style="border: 1px solid #1E3D51 ; float: left; width: 300px; height: 30px; background-color: rgba(46, 97, 132, 0.5)">
+                        <button type="submit" class="BouttonRechercher">
+                            <img src="{{ absolute_url('elementsJpg/searchIcone.png') }}" width="20px" height= "29px" style="float: left;">
+                        </button>
+                </div>
                 <nav class ="elements"> <!-- pour le menu principal du site-->
                     <a href=#flux>Flux</a> <!-- liens vers des ancres de la MEME page-->
                     <a href = "#concept">Concept </a>
@@ -212,6 +219,7 @@
     <!-- PARTIE FX-->
     <div id = histoire class="parties">
         <h1 class ="titreSection5 TitreSection"><span id="SousTitre">Histoire</span></h1>
+
         <section   class = "s5">
 
             <!-- partie calendrier -->
@@ -278,8 +286,10 @@
 
         </section>
     </div>
+
 </div>
 
+    <!-- côté droit des animaux-->
     <div class="animaux">
         {% block sidebar2 %}
 
@@ -329,29 +339,11 @@
 
     </div>
 
-    <footer class = "piedPage">  <!--pied de page -->
-        <table>
-            <tr>   <!-- première ligne-->
-                <td>  <!-- début première cellule -->
-                    <strong>Contact</strong>
-                </td> <!-- fin première cellule -->
-            </tr>  <!--fin première ligne-->
 
-            <tr>
-                <td>Adresse</td>
-            </tr>
-
-            <tr>
-                <td>Téléphone</td>
-            </tr>
-
-            <tr>
-                <td><a href = "mailto:elodielucien@gmail.com">Nous écrire</a></td>
-            </tr>
-
-        </table>
-
-    </footer>
+    <!-- le pied de la page -->
+    <div style="float: left;width:100%; background-color: #141420;">
+        <p id="pied" style="height: 50px; text-align: center ; font-size: 70px;">Mention légale et plan du site</p>
+    </div>
 
 
 {% endblock %}
