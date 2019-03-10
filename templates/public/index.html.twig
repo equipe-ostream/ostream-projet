@@ -40,9 +40,10 @@
                     <a href="#projets">Projets</a>
                     <a href="#equipe">Equipe</a>
                     <a href="#histoire">Histoire</a>
-                    <a href="#">Agir</a>
-                    <a href="#">Connexion</a>
-                    <a href="#">Panier</a>
+                    <a href="https://www.helloasso.com/">Agir</a>
+                    <a href="https://www.helloasso.com/">Panier</a>
+                    <a href="/register">Connexion</a>
+
                 </div>
             </nav>
 
@@ -78,52 +79,52 @@
                 <tr>   <!-- première ligne-->
 
                     <td>  <!-- début première cellule -->
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite-haut.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleche_droite_haut.png') }}" alt = "fleche" class = "fleche " />
                     </td> <!-- fin première cellule -->
 
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Underwater-camera.png') }}" alt = "camera" id="camera" onclick="changeTextCamera()" class = "camera cyclephoto" />
+                        <img src = "{{ asset('assets/img/Underwater-camera.png') }}" alt = "camera" id="camera" onclick="changeTextCamera()" class = "camera cyclephoto" />
                     </td>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Diffusion.png') }}" alt = "diffusion" onclick="changeTextDiffusion()" class = "diffusion cyclephoto" />
+                        <img src = "{{ asset('assets/img/Diffusion.png') }}" alt = "diffusion" onclick="changeTextDiffusion()" class = "diffusion cyclephoto" />
                     </td>
                     <td>
                         <!-- ici flèche-->
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
                     </td>
 
                 </tr>  <!--fin première ligne-->
 
                 <tr>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Corail.png') }}" alt = "corailC" class = "corailC cyclephoto" onclick="changeTextCorail()" title = "Le Corail : blablabla" />
+                        <img src = "{{ asset('assets/img/Corail.png') }}" alt = "corailC" class = "corailC cyclephoto" onclick="changeTextCorail()" title = "Le Corail : blablabla" />
                     </td>
                     <td colspan="3" ></td>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Conscience.png') }}" alt = "conscience" onclick="changeTextConscience()" class = "conscience cyclephoto" />
+                        <img src = "{{ asset('assets/img/Conscience.png') }}" alt = "conscience" onclick="changeTextConscience()" class = "conscience cyclephoto" />
                     </td>
 
                 </tr>
 
                 <tr>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Developpement.png') }}" alt = "developpement" onclick="changeTextDeveloppement()" class = "developpement cyclephoto" />
+                        <img src = "{{ asset('assets/img/Developpement.png') }}" alt = "developpement" onclick="changeTextDeveloppement()" class = "developpement cyclephoto" />
                     </td>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/Flèche gauche.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                     <td>
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Financement.png') }}" alt = "financement" onclick="changeTextFinancement()" class = "financement cyclephoto" />
+                        <img src = "{{ asset('assets/img/Financement.png') }}" alt = "financement" onclick="changeTextFinancement()" class = "financement cyclephoto" />
                     </td>
                     <td>
                         <!--ici fleche-->
-                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                 </tr>
             </table> <br/>
@@ -178,7 +179,7 @@
                 <!--  partie pour l'affichage de toutes les informations [lors du clique] concernant une personne,
                        selon la photo appuyée par l'utilisateur.  -->
                 <div id="Informations" class="Informations">
-                    <img id="maPhoto" class="maPhoto" src="picture1.png" alt="">
+                    <img id="maPhoto" class="maPhoto" src="{{ asset('assets/img/picture1.png') }}" alt="">
                     <p id="mesInformations" class="mesInformations">
                         textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
                         textetextetextetextetextetextetextetextetextetextetextetextetextetextetextete
@@ -190,20 +191,20 @@
                 <div id="photosEquipe" class="photosEquipe">
                     <table>
                         <tr>
-                            <td><img src="picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture1()" class="photos"></td>
-                            <td><img src="picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture2()" class="photos"> </td>
+                            <td><img src="{{ asset('assets/img/') }}picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture1()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/') }}picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture2()" class="photos"> </td>
                         </tr>
                         <tr>
-                            <td><img src="picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture3()" class="photos"></td>
-                            <td><img src="picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture4()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/') }}picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture3()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/') }}picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture4()" class="photos"></td>
                         </tr>
                         <tr>
-                            <td> <img src="picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture5()" class="photos"></td>
-                            <td> <img src="picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture6()" class="photos"></td>
+                            <td> <img src="{{ asset('assets/img/') }}picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture5()" class="photos"></td>
+                            <td> <img src="{{ asset('assets/img/') }}picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture6()" class="photos"></td>
                         </tr>
                         <tr>
-                            <td> <img src="picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture7()" class="photos">  </td>
-                            <td> <img src="picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture8()" class="photos">  </td>
+                            <td> <img src="{{ asset('assets/img/') }}picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture7()" class="photos">  </td>
+                            <td> <img src="{{ asset('assets/img/') }}picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture8()" class="photos">  </td>
                         </tr>
                     </table>
                 </div>
@@ -372,7 +373,7 @@
             </tr>
 
             <tr>
-                <td><a href = "mailto:elodielucien@gmail.com">Nous écrire</a></td>
+                <td><a href = "mailto:adrien.landa@oceanstream.fr">Nous écrire</a></td>
             </tr>
 
         </table>

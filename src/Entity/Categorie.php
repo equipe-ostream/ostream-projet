@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
  */
-class Article
+class Categorie
 {
     /**
      * @ORM\Id()
@@ -22,14 +22,9 @@ class Article
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
      */
-    private $contenu;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dateCreation;
+    private $date_creation;
 
     public function getId(): ?int
     {
@@ -50,26 +45,13 @@ class Article
 
     public function getDateCreation(): ?\DateTimeInterface
     {
-        return $this->dateCreation;
+        return $this->date_creation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    public function setDateCreation(\DateTimeInterface $date_creation): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->date_creation = $date_creation;
 
         return $this;
     }
-
-    public function getContenu(): ?string
-    {
-        return $this->contenu;
-    }
-
-    public function setContenu(string $contenu): self
-    {
-        $this->contenu = $contenu;
-
-        return $this;
-    }
-
 }

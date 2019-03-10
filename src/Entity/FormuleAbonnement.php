@@ -21,12 +21,6 @@ class FormuleAbonnement
      */
     private $prixAbonnement;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Nombredeconnexion", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $Nombredeconnexion;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -44,15 +38,4 @@ class FormuleAbonnement
         return $this;
     }
 
-    public function getNombredeconnexion(): ?Nombredeconnexion
-    {
-        return $this->Nombredeconnexion;
-    }
-
-    public function setNombredeconnexion(Nombredeconnexion $Nombredeconnexion): self
-    {
-        $this->Nombredeconnexion = $Nombredeconnexion;
-
-        return $this;
-    }
 }

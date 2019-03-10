@@ -2,15 +2,25 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\DeletableTrait;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdminRepository")
  */
-class Admin
+class Admin implements UserInterface
 {
+    use DeletableTrait;
+
+    const STATUS_ENABLED = 'enabled';
+    const STATUS_DISABLED = 'disabled';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -26,38 +36,73 @@ class Admin
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $statut;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="roles", type="string", length=255)
      */
-    private $password;
+    private $roles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Article")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
      */
-    private $articles;
+    private $createdAt;
 
-    public function __construct()
-    {
-        $this->articles = new ArrayCollection();
-    }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
+    /**
+     * @param string $nom
+     * @return Utilisateur
+     */
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
@@ -65,35 +110,18 @@ class Admin
         return $this;
     }
 
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
+    /**
+     * @return string|null
+     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return Utilisateur
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -102,28 +130,207 @@ class Admin
     }
 
     /**
-     * @return Collection|Article[]
+     * @return string|null
      */
-    public function getArticles(): Collection
+    public function getAdresse(): ?string
     {
-        return $this->articles;
+        return $this->adresse;
     }
 
-    public function addArticle(Article $article): self
+    /**
+     * @param string $adresse
+     * @return Utilisateur
+     */
+    public function setAdresse(string $adresse): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-        }
+        $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function removeArticle(Article $article): self
+    /**
+     * @return string|null
+     */
+    public function getEmail(): ?string
     {
-        if ($this->articles->contains($article)) {
-            $this->articles->removeElement($article);
-        }
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return Utilisateur
+     */
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    /**
+     * @param string $statut
+     * @return Utilisateur
+     */
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param string $telephone
+     * @return Utilisateur
+     */
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     * @return Utilisateur
+     */
+    public function setUsername(string $username): Utilisateur
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param string $roles
+     * @return Utilisateur
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = serialize($roles);
+        return $this;
+    }
+    /**
+     * Get roles
+     *
+     * @return string
+     */
+    public function getRoles()
+    {
+        return unserialize($this->roles);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     * @return Utilisateur
+     */
+    public function setCreatedAt(\DateTime $createdAt): Utilisateur
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     * @return Utilisateur
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): Utilisateur
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * Loads the user for the given username.
+     *
+     * This method must throw UsernameNotFoundException if the user is not
+     * found.
+     *
+     * @param string $username The username
+     *
+     * @return UserInterface
+     *
+     * @throws UsernameNotFoundException if the user is not found
+     */
+    public function loadUserByUsername($username)
+    {
+        // TODO: Implement loadUserByUsername() method.
+    }
+    /**
+     * Refreshes the user for the account interface.
+     *
+     * It is up to the implementation to decide if the user data should be
+     * totally reloaded (e.g. from the database), or if the UserInterface
+     * object can just be merged into some internal array of users / identity
+     * map.
+     *
+     * @param UserInterface $user
+     *
+     * @return UserInterface
+     *
+     * @throws UnsupportedUserException if the account is not supported
+     */
+    public function refreshUser(UserInterface $user)
+    {
+        // TODO: Implement refreshUser() method.
+    }
+    /**
+     * Whether this provider supports the given user class.
+     *
+     * @param string $class
+     *
+     * @return bool
+     */
+    public function supportsClass($class)
+    {
+        // TODO: Implement supportsClass() method.
     }
 }

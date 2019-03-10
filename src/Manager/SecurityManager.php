@@ -71,7 +71,9 @@ class SecurityManager
 
         $user->setRoles(['ROLE_USER']);
         $user->setCreatedAt(new \DateTime());
+        $user->setUsername($user->getEmail());
         $user->setUpdatedAt(new \DateTime());
+        $user->setStatut(Utilisateur::STATUS_ENABLED);
         $this->em->persist($user);
         $this->em->flush();
 

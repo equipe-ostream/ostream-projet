@@ -22,10 +22,6 @@ class SecurityController extends AbstractController
      */
     public function user(AuthenticationUtils $authUtils): Response
     {
-        if ($this->getUser() instanceof Utilisateur) {
-            return $this->redirectToRoute('dashboard_user');
-        }
-
         $form = $this->createForm(LoginType::class, [
             '_username' => $authUtils->getLastUsername(),
         ]);
@@ -37,10 +33,28 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/admin/login", name="login_admin", methods={"GET", "POST"})
+     * @param AuthenticationUtils $authUtils
+     * @return Response
+     */
+    public function adminLogin(Request $request, AuthenticationUtils $authUtils): Response
+    {
+        $form = $this->createForm(LoginType::class, [
+            '_username' => $authUtils->getLastUsername(),
+        ]);
+
+        return $this->render('security/login_admin.html.twig', [
+            'error' => $authUtils->getLastAuthenticationError(),
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/register", name="register", methods={"GET","POST"})
      * @param Request $request
      * @param SecurityManager $securityManager
      * @return Response
+     * @throws \Exception
      */
     public function registerUser(
         Request $request,
@@ -61,11 +75,11 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/userDashboard", name="userDashboard", methods={"GET","POST"})
-     * @return Response
+     * @Route("/user/logout", name="logout_user")
+     * @Route("/admin/logout", name="logout_admin")
      */
-    public function userDashboard() {
-
-        return $this->render( 'security/UserDashBoard.html.twig');
+    public function logout()
+    {
     }
+
 }

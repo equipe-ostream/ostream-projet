@@ -2,7 +2,7 @@
 
 namespace App\Security\Guard;
 
-use App\Entity\Utilisateur;
+use App\Entity\Admin;
 use App\Services\PasswordService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,16 +14,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
-class UserAuthenticator extends AbstractGuardAuthenticator
+class AdminAuthenticator extends AbstractGuardAuthenticator
 {
     /**
      * @var PasswordService
      */
     private $passwordService;
+
     /**
      * @var UrlGeneratorInterface
      */
     private $urlGenerator;
+
     /**
      * @param PasswordService       $passwordService
      * @param UrlGeneratorInterface $urlGenerator
@@ -35,6 +37,7 @@ class UserAuthenticator extends AbstractGuardAuthenticator
         $this->passwordService = $passwordService;
         $this->urlGenerator    = $urlGenerator;
     }
+
     /**
      * @param Request $request
      * @return bool
@@ -44,7 +47,7 @@ class UserAuthenticator extends AbstractGuardAuthenticator
         if (!$request->request->has('_username') || !$request->request->has('_password')) {
             return false;
         }
-        if ($this->urlGenerator->generate('login') !== $request->getPathInfo()) {
+        if ($this->urlGenerator->generate('login_admin') !== $request->getPathInfo()) {
             return false;
         }
         if (!$request->isMethod(Request::METHOD_POST)) {
@@ -52,6 +55,7 @@ class UserAuthenticator extends AbstractGuardAuthenticator
         }
         return true;
     }
+
     /**
      * @param Request                 $request
      * @param AuthenticationException $exception
@@ -60,8 +64,9 @@ class UserAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, AuthenticationException $exception = null): RedirectResponse
     {
-        return new RedirectResponse($this->urlGenerator->generate('login'));
+        return new RedirectResponse($this->urlGenerator->generate('login_admin'));
     }
+
     /**
      * @param Request $request
      * @return array
@@ -75,15 +80,17 @@ class UserAuthenticator extends AbstractGuardAuthenticator
         $request->getSession()->set(Security::LAST_USERNAME, $data['username']);
         return $data;
     }
+
     /**
      * @param string                $credentials
      * @param UserProviderInterface $userProvider
-     * @return Utilisateur
+     * @return Admin
      */
-    public function getUser($credentials, UserProviderInterface $userProvider): Utilisateur
+    public function getUser($credentials, UserProviderInterface $userProvider): Admin
     {
         return $userProvider->loadUserByUsername($credentials['username']);
     }
+
     /**
      * @param string        $credentials
      * @param UserInterface $user
@@ -96,6 +103,7 @@ class UserAuthenticator extends AbstractGuardAuthenticator
         }
         return false;
     }
+
     /**
      * @param Request        $request
      * @param TokenInterface $token
@@ -104,8 +112,9 @@ class UserAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
-        return new RedirectResponse($this->urlGenerator->generate('dashboard_user'));
+        return new RedirectResponse($this->urlGenerator->generate('dashboard_admin'));
     }
+
     /**
      * @param Request                 $request
      * @param AuthenticationException $exception
@@ -114,8 +123,9 @@ class UserAuthenticator extends AbstractGuardAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): RedirectResponse
     {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
-        return new RedirectResponse($this->urlGenerator->generate('logout_user'));
+        return new RedirectResponse($this->urlGenerator->generate('logout_admin'));
     }
+
     /**
      * @return bool
      */

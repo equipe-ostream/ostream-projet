@@ -3,8 +3,12 @@ security:
     providers:
         user:
             entity: { class: App\Entity\Utilisateur, property: email }
+        admin:
+            entity: { class: App\Entity\Admin, property: email }
     encoders:
         App\Entity\Utilisateur:
+            algorithm: bcrypt
+        App\Entity\Admin:
             algorithm: bcrypt
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
@@ -25,7 +29,21 @@ security:
             guard:
                 authenticators:
                     - App\Security\Guard\UserAuthenticator
+        admin:
+            pattern: ^/admin
+            switch_user: true
+            anonymous: true
+            provider: admin
+            logout:
+                path: /admin/logout
+                target: /
+                invalidate_session: true
+            guard:
+                authenticators:
+                    - App\Security\Guard\AdminAuthenticator
     access_control:
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/, role: ROLE_USER }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
