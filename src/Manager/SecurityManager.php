@@ -69,12 +69,9 @@ class SecurityManager
             return $this->messageService->addError('Cette adresse e-mail est déjà utilisée');
         }
 
-        $pass = $this->passwordService->encode($user, $user->getPassword());
-        $user->setPassword($pass);
         $user->setRoles(['ROLE_USER']);
         $user->setCreatedAt(new \DateTime());
         $user->setUpdatedAt(new \DateTime());
-
         $this->em->persist($user);
         $this->em->flush();
 

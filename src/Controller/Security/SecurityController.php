@@ -22,6 +22,10 @@ class SecurityController extends AbstractController
      */
     public function user(AuthenticationUtils $authUtils): Response
     {
+        if ($this->getUser() instanceof Utilisateur) {
+            return $this->redirectToRoute('dashboard_user');
+        }
+
         $form = $this->createForm(LoginType::class, [
             '_username' => $authUtils->getLastUsername(),
         ]);
@@ -37,7 +41,6 @@ class SecurityController extends AbstractController
      * @param Request $request
      * @param SecurityManager $securityManager
      * @return Response
-     * @throws \Exception
      */
     public function registerUser(
         Request $request,

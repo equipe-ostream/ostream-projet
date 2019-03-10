@@ -1,0 +1,522 @@
+html, body
+{
+	background : linear-gradient(#b2edf4,#084775 );
+	color : white;
+	height: auto;
+	max-width: 100%;
+	overflow-x: hidden;
+	/*margin: auto;
+	padding: 0px 10px;
+	margin-left: 160px;*/
+}
+
+
+
+p {
+	font-size: 14px;
+	font-family: "Times New Roman", sans-serif;
+	text-align: center;
+
+}
+
+.enTete
+{
+	/*width: 100%;
+	margin: auto;
+	margin-bottom: 25px;*/
+}
+
+
+.imageEnTete
+{
+	width: 80%;
+	height: 50%;
+	display : flex;
+	margin : auto;
+
+}
+
+.logo
+{
+	width: 60%;
+	display: flex;
+	margin : auto;
+	position: center;
+
+
+}
+
+.Menu
+{
+	/*color : white;
+	position : absolute;
+	display: flex;
+	flex-direction: column;
+	font-size: 30px;
+	text-align: right;*/
+
+}
+.elements {
+	padding-left: 550px;
+	color : white;
+	position : absolute;
+	display: flex;
+	flex-direction: column;
+	font-size: 30px;
+	text-align: right;
+	border-right: groove #0D47A1;
+	padding-right: 2px;
+}
+.elements a:hover{
+	color: Blue;
+}
+.elements a{
+	text-decoration: none;
+	font-size: 20px;
+	display: block;
+	color: inherit;
+
+}
+
+.menuGauche
+{
+	width: 160px;
+	position: relative;
+	top: 0px;
+	left: 0;
+	/*z-index: 1;
+	background-color: white;*/
+	overflow-x: hidden;
+	padding-top: 20px;
+}
+
+.elementMenuGauche
+{
+	text-align: center;
+}
+.menuGauche .elementMenuGauche a {
+    text-decoration: none;
+    display: block;
+	padding: 20px;
+}
+.menuGauche .elementMenuGauche a:hover {
+	background-color: #5eb5e0;
+}
+
+.corail
+{
+	width: 30%;
+
+}
+
+.corailC, .camera, .conscience, .developpement, .diffusion, .financement, .fleche
+{
+	width: 40%;
+}
+
+.carte
+{
+	width: 50%;
+	object-position: right;
+}
+
+.elements /*éléments du menu*/
+{
+	margin : auto;
+
+}
+.Menudroite{
+	height: 100%;
+	border-left: dot-dash;
+	border-color: white;
+}
+
+.video
+{
+	object-position: right;
+	object-fit: cover;
+}
+#titleCycle{
+	font-size: 20px;
+}
+.cycleInformation{
+	padding: 7px;
+	width: 60%;
+	height: 100px;
+}
+.cycle
+{
+	object-position: center;
+	margin-top: 40px;
+	margin-left: 40px;
+	width: 100%;
+	height: 100%;
+}
+.gauche, .animaux
+{
+	float: left;
+	width: 10%;
+}
+.mainBody{
+	float: left;
+	width: 80%;
+}
+.cyclephoto{
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+.parties
+{
+	height: 600px;
+}
+
+
+section{
+	padding-left: 160px;
+}
+
+.titreSection1, .titreSection2, .titreSection3, .titreSection4, .titreSection5
+{
+	padding-left: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: "Times New Roman", sans-serif;
+	color: gray;
+	text-align: left;
+	text-decoration: underline;
+	padding-bottom: 30px;
+}
+
+.s1, .s2, .s3, .s4, .s5
+{
+	width: 100%;
+	margin : auto; /*pour centrer le bloc*/
+	display: flex;
+	text-align: center;
+
+}
+
+.s1, .s2, .s3, .equipe, .s5
+{
+	margin-bottom: 25px; /* marges extérieures en bas*/
+
+}
+
+.conteneur1, .conteneur2, .conteneur3, .conteneur4, .conteneur5
+{
+	display: flex;
+
+}
+
+
+
+.equipe{
+	width: 100%;
+}
+.photos{
+	padding-left: 50px;
+	width: 100px;
+	height: 100px;
+}
+.maPhoto{
+	width: 180px;
+	height: 180px;
+	float: right;
+}
+.mesInformations{
+	padding-top: 50px;
+	margin-left: 20px;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	text-align: center;
+	width: 50%;
+	color: lightseagreen;
+}
+.Informations{
+	width: 50%;
+	float: right;
+	margin-right: 100px;
+}
+.photosEquipe{
+	width: 35%;
+}
+
+.TitreSection{
+	position: relative;
+	display: block;
+	margin:0 auto;
+	width:100%;
+	text-align:left;
+	font-weight:bold;
+}
+#SousTitre{
+
+	position:relative;
+	/*text-decoration: underline;*/
+	font-weight:500;
+	font-size:1.5em;
+}
+
+/* l'interligne avant les titres */
+#SousTitre::before{
+	content: "";
+	width:100vw;
+	border-top:2px solid grey;
+	position:absolute;
+	height:0;
+	top:1.0em;
+	right:100%;
+	margin-right:0em;
+}
+
+#vague{
+	background-size: cover;
+}
+.headd{
+	background-image:url('elementsJpg/photoVagueFinale.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	width: 100%;
+	height: 640px;
+}
+
+.curved-container {
+	/* position: relative;*/
+	width: 200px;
+	/* margin: auto;*/
+
+	height: 200px;
+	transform: rotate(-72deg);
+	-moz-transform: rotate(-72deg);
+	-webkit-transform: rotate(-72deg);
+	margin-top: 180px;
+
+}
+
+
+.curved-container span {
+	writing-mode: vertical-lr;
+	font: 26px Monaco, MonoSpace;
+	height: 200px;
+	position: absolute;
+	width: 20px;
+	left: 0;
+	top: 0;
+	transform-origin: bottom center;
+	-moz-transform-origin: bottom center;
+	-webkit-transform-origin: bottom center;
+}
+
+
+.char0 {
+	text-align: left;
+	padding-bottom: 0px;
+	transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+}
+
+.char1 {
+	text-align: left;
+	padding-bottom: 10px;
+	transform: rotate(10deg);
+	-moz-transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+}
+.char2 {
+	text-align: left;
+	padding-bottom: 20px;
+	transform: rotate(20deg);
+	-moz-transform: rotate(20deg);
+	-webkit-transform: rotate(20deg);
+}
+.char3 {
+	text-align: left;
+	padding-bottom: 30px;
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
+}
+.char4 {
+	text-align: left;
+	padding-bottom: 40px;
+	transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-webkit-transform: rotate(40deg);
+}
+.char5 {
+	padding-bottom: 50px;
+	text-align: left;
+	transform: rotate(50deg);
+	-moz-transform: rotate(50deg);
+	-webkit-transform: rotate(50deg);
+}
+.char6 {
+	padding-bottom: 60px;
+	text-align: left;
+	transform: rotate(60deg);
+	-moz-transform: rotate(60deg);
+	-webkit-transform: rotate(60deg);
+}
+.char7 {
+	padding-bottom: 70px;
+	text-align: left;
+	transform: rotate(70deg);
+	-moz-transform: rotate(70deg);
+	-webkit-transform: rotate(70deg);
+}
+.char8 {
+	padding-bottom: 80px;
+	text-align: left;
+	transform: rotate(80deg);
+	-moz-transform: rotate(80deg);
+	-webkit-transform: rotate(80deg);
+}
+.char9 {
+	text-align: left;
+	padding-bottom: 80px;
+	transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+}
+.char10 {
+	text-align: left;
+	padding-bottom: 70px;
+	padding-left: 10px;
+	transform: rotate(100deg);
+	-moz-transform: rotate(100deg);
+	-webkit-transform: rotate(100deg);
+}
+.char11 {
+	text-align: left;
+	padding-bottom: 70px;
+	padding-left: 10px;
+	transform: rotate(110deg);
+	-moz-transform: rotate(110deg);
+	-webkit-transform: rotate(110deg);
+}
+.char12 {
+	text-align: center;
+	padding-bottom: 80px;
+	padding-left: 10px;
+	transform: rotate(120deg);
+	-moz-transform: rotate(120deg);
+	-webkit-transform: rotate(120deg);
+}
+.char13 {
+	text-align: center;
+	padding-bottom: 80px;
+    padding-left: 1px;
+	padding-top: 100px;
+	transform: rotate(100deg);
+	-moz-transform: rotate(100deg);
+	-webkit-transform: rotate(100deg);
+}
+.char14 {
+	text-align: center;
+	padding-bottom: 50px;
+	padding-left: -10px;
+	padding-top: 200px;
+	transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+}
+.char15 {
+	text-align: left;
+	padding-bottom: 20px;
+	padding-left: 150px;
+	padding-top: 245px;
+	transform: rotate(60deg);
+	-moz-transform: rotate(60deg);
+	-webkit-transform: rotate(60deg);
+}
+.char16 {
+	text-align: left;
+	padding-left: 10px;
+	margin-left: 70px;
+	padding-top: 480px;
+	transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-webkit-transform: rotate(40deg);
+}
+.char17 {
+	text-align: left;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 175px;
+	padding-top: 470px;
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
+}
+.char18 {
+	text-align: left;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 220px;
+	padding-top: 565px;
+	transform: rotate(20deg);
+	-moz-transform: rotate(20deg);
+	-webkit-transform: rotate(20deg);
+}
+.char19 {
+	text-align: left;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 350px;
+	padding-top: 430px;
+	transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+}
+
+/*#dtGauche{
+	border: 2px groove gainsboro;
+	width: 40%;
+	height: 180px;
+	positionnement du div
+	position: relative;
+	right: 40px;
+	top: 300px;
+}
+#dtDroite{
+	border: 2px groove gainsboro;
+	width: 25%;
+	height: 180px;
+	positionnement du div
+	position: relative;
+	left: 250px;
+	top: 350px;
+}
+#dtGauche ul li, #dtDroite ul li{
+	text-align: left;
+}
+
+#titreGauche{
+    border: 2px groove black;
+
+	position: relative;
+	left: -40px;
+	top: -50px;
+}
+#titreFuture{
+	padding: 0;
+	font-size: 60px;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
