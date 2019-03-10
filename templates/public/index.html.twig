@@ -3,7 +3,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/style_map.css') }}" >
 {% endblock %}
 
 
@@ -11,7 +12,7 @@
 
     <div class="headd " >
            <!-- <div class ="Menu">  Le menu doit être par dessus l'image de vague-->
-                <img class = "logo" src = "{{ absolute_url('elementsJpg/LogoBlanc.png') }}" alt = "logo" />
+                <img class = "logo" src = "{{ asset('assets/img/LogoBlanc.png') }}" alt = "logo" />
                 <nav class ="elements"> <!-- pour le menu principal du site-->
                     <a href=#flux>Flux</a> <!-- liens vers des ancres de la MEME page-->
                     <a href = "#concept">Concept </a>
@@ -20,7 +21,7 @@
                     <a href = "#histoire"> Histoire </a>
                     <a href = "https://www.helloasso.com/"> Agir </a>
                     <a href = "https://www.helloasso.com/"> Panier </a>
-                    <a href = "/register"> Connexion </a>
+                    <a href = "{{ path('login') }}"> Connexion </a>
                 </nav>
 
            <!-- </div>-->
@@ -32,7 +33,7 @@
             <nav id="menu" class = "menuGauche">
 
                 <p>
-                    <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
+                    <img class = "corail" src = "{{ asset('assets/img/Corail-Noir.png') }}" alt = "corail" />
                 </p>
                 <div class="elementMenuGauche">
                     <a href="#flux">Flux</a>
@@ -42,7 +43,7 @@
                     <a href="#histoire">Histoire</a>
                     <a href="https://www.helloasso.com/">Agir</a>
                     <a href="https://www.helloasso.com/">Panier</a>
-                    <a href="/register">Connexion</a>
+                    <a href="{{ path('login') }}">Connexion</a>
 
                 </div>
             </nav>
@@ -79,21 +80,21 @@
                 <tr>   <!-- première ligne-->
 
                     <td>  <!-- début première cellule -->
-                        <img src = "{{ asset('assets/img/fleche_droite_haut.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite-haut.png') }}" alt = "fleche" class = "fleche " />
                     </td> <!-- fin première cellule -->
 
                     <td>
                         <img src = "{{ asset('assets/img/Underwater-camera.png') }}" alt = "camera" id="camera" onclick="changeTextCamera()" class = "camera cyclephoto" />
                     </td>
                     <td>
-                        <img src = "{{ asset('assets/img/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                     <td>
                         <img src = "{{ asset('assets/img/Diffusion.png') }}" alt = "diffusion" onclick="changeTextDiffusion()" class = "diffusion cyclephoto" />
                     </td>
                     <td>
                         <!-- ici flèche-->
-                        <img src = "{{ asset('assets/img/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite.png') }}" alt = "fleche" class = "fleche " />
                     </td>
 
                 </tr>  <!--fin première ligne-->
@@ -111,20 +112,20 @@
 
                 <tr>
                     <td>
-                        <img src = "{{ asset('assets/img/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleches/fleche-gauche-haut.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                     <td>
                         <img src = "{{ asset('assets/img/Developpement.png') }}" alt = "developpement" onclick="changeTextDeveloppement()" class = "developpement cyclephoto" />
                     </td>
                     <td>
-                        <img src = "{{ asset('assets/img/Flèche gauche.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleches/fleche-gauche.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                     <td>
                         <img src = "{{ asset('assets/img/Financement.png') }}" alt = "financement" onclick="changeTextFinancement()" class = "financement cyclephoto" />
                     </td>
                     <td>
                         <!--ici fleche-->
-                        <img src = "{{ asset('assets/img/Flèche droite.png') }}" alt = "fleche" class = "fleche " />
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite.png') }}" alt = "fleche" class = "fleche " />
                     </td>
                 </tr>
             </table> <br/>
@@ -150,23 +151,22 @@
         <h1 class = "titreSection3 TitreSection"> <span id="SousTitre"> Projets </span> </h1>
         <section  class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
 
-            <span> <?php echo $titrePin; ?> </span>
-            <p>
-                <figure>
-                    <img class = "carte" src = "{{ asset('elementsJpg/carteFondsMarins.jpg') }}" alt = "corail" />
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    <br/>
-                    <!--
-                    Ceci est le texte entourant la carte du monde (à gauche) : varie selon le pin où on a cliqué => boucle if sur le fichier controller ?
-                    src : chemin relatif de l'image,
-                    alt : affiché si l'image ne peut se charger,
-                    title : s'affiche quand on passe la souris sur l'image
+            <div class="contenant" >
+                <div id='map'></div>
 
-                     -->
-                </figure>
-            </p>
+                <div class="contenu1">
+                    <p>
+                        texte donnant des informations en rapport avec le projet sur lequel l'utilisateur aura cliqué
+                        Non, pas obligatoirement. Si vous dites par la suite que vous voulez vos titres en rouge, ce style aura la priorité et vos titres seront donc en rouge. En revanche, si vous n'indiquez rien de particulier (comme on l'a fait tout à l'heure), alors vos titres hériteront de la couleur blanche.
+                        Cela ne fonctionne pas uniquement pour la couleur, entendons-nous bien. Toutes les propriétés CSS seront héritées : vous pouvez par exemple demander une mise en gras dans la balise body et tous vos titres et paragraphes seront en gras.
+                    </p>
+                </div>
+            </div>
+
+
+            <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+                    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+                    crossorigin=""></script>
         </section>
     </div>
 
@@ -181,9 +181,8 @@
                 <div id="Informations" class="Informations">
                     <img id="maPhoto" class="maPhoto" src="{{ asset('assets/img/picture1.png') }}" alt="">
                     <p id="mesInformations" class="mesInformations">
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextete
-                        xtetextetexte textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut lectus ipsum. Nam in fringilla magna. Quisque posuere imperdiet lacus non fringilla. Nam vel arcu a leo tincidunt malesuada sit amet eu lectus. Cras gravida sapien ac arcu finibus luctus. Duis sed eros efficitur, fermentum mauris nec, consequat odio. Phasellus in risus a velit pulvinar rhoncus. Integer viverra eros eget elit hendrerit, vulputate mattis mauris convallis. Duis tempus convallis tempor. Fusce sed velit in mi suscipit malesuada non sit amet ligula. Suspendisse potenti. Donec vitae sapien nisl. Nam eu placerat justo, sit amet interdum magna.
+
                     </p>
                 </div>
 
@@ -191,20 +190,20 @@
                 <div id="photosEquipe" class="photosEquipe">
                     <table>
                         <tr>
-                            <td><img src="{{ asset('assets/img/') }}picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture1()" class="photos"></td>
-                            <td><img src="{{ asset('assets/img/') }}picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture2()" class="photos"> </td>
+                            <td><img src="{{ asset('assets/img/picture1.png') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture1()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/picture2.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture2()" class="photos"> </td>
                         </tr>
                         <tr>
-                            <td><img src="{{ asset('assets/img/') }}picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture3()" class="photos"></td>
-                            <td><img src="{{ asset('assets/img/') }}picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture4()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/picture3.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture3()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/picture1.png') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture4()" class="photos"></td>
                         </tr>
                         <tr>
-                            <td> <img src="{{ asset('assets/img/') }}picture1.png" alt=""  onClick="changePhoto(this.src), changeTextPicture5()" class="photos"></td>
-                            <td> <img src="{{ asset('assets/img/') }}picture3.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture6()" class="photos"></td>
+                            <td> <img src="{{ asset('assets/img/picture1.png') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture5()" class="photos"></td>
+                            <td> <img src="{{ asset('assets/img/picture3.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture6()" class="photos"></td>
                         </tr>
                         <tr>
-                            <td> <img src="{{ asset('assets/img/') }}picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture7()" class="photos">  </td>
-                            <td> <img src="{{ asset('assets/img/') }}picture2.jpg" alt=""  onClick="changePhoto(this.src), changeTextPicture8()" class="photos">  </td>
+                            <td> <img src="{{ asset('assets/img/picture2.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture7()" class="photos">  </td>
+                            <td> <img src="{{ asset('assets/img/picture2.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture8()" class="photos">  </td>
                         </tr>
                     </table>
                 </div>
@@ -313,41 +312,41 @@
             <nav id="menu" class = "">
                 <!-- partie de 0m à 200m -->
                 <div class="imgAnimaux">
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/._zone 2_6 [espèce 1_23] chrysaora hysoscella.png')}}" alt = "chrysaora hysoscella" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 2_23] zanclus cornutus.png') }}" alt = "zanclus cornutus" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 3_23] Macrocystis Pyrifera.png') }}" alt = "Macrocystis Pyrifera" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 4_23] Balaenoptera Musculus.png') }}" alt = "Balaenoptera Musculus" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 2_6 [espèce 5_23] carcharodon carcharias.png') }}" alt = "carcharodon carcharias" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/._zone 2_6 [espèce 1_23] chrysaora hysoscella.png')}}" alt = "chrysaora hysoscella" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 2_23] zanclus cornutus.png') }}" alt = "zanclus cornutus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 3_23] Macrocystis Pyrifera.png') }}" alt = "Macrocystis Pyrifera" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 4_23] Balaenoptera Musculus.png') }}" alt = "Balaenoptera Musculus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 5_23] carcharodon carcharias.png') }}" alt = "carcharodon carcharias" />
                  </div>
                 <!--  partie de 200m à 1000m -->
                 <div class="imgAnimaux">
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 6_23] squatina australis.png') }}" alt = "squatina australis" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 7_23] Galatea Squamifera.png') }}" alt = "Galatea Squamifera" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 8_23] Vampyroteuthis Infernalis.png') }}" alt = "Vampyroteuthis Infernalis" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 9_23] Idiacanthus Fasciola.png') }}" alt = "Idiacanthus Fasciola" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 3_6 [espèce 10_23] Bathocyroe  Fosteri.png') }}" alt = "Bathocyroe  Fosteri" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 6_23] squatina australis.png') }}" alt = "squatina australis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 7_23] Galatea Squamifera.png') }}" alt = "Galatea Squamifera" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 8_23] Vampyroteuthis Infernalis.png') }}" alt = "Vampyroteuthis Infernalis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 9_23] Idiacanthus Fasciola.png') }}" alt = "Idiacanthus Fasciola" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 10_23] Bathocyroe  Fosteri.png') }}" alt = "Bathocyroe  Fosteri" />
                 </div>
                 <!-- partie de 1000m à 2000m -->
                 <div class="imgAnimaux">
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 11_23] Melanocetus johnsonii.png') }}" alt = "Melanocetus johnsonii" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 12_23] Architeuthis Dux.png') }}" alt = "Architeuthis Dux" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 13_23] Benthoctopus Levis.png') }}" alt = "Benthoctopus Levis" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 14_23] Physeter Macrocephalus.png') }}" alt = "Physeter Macrocephalus" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 4_6 [espèce 15_23] Myxinidae.png') }}" alt = "Myxinidae" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 11_23] Melanocetus johnsonii.png') }}" alt = "Melanocetus johnsonii" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 12_23] Architeuthis Dux.png') }}" alt = "Architeuthis Dux" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 13_23] Benthoctopus Levis.png') }}" alt = "Benthoctopus Levis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 14_23] Physeter Macrocephalus.png') }}" alt = "Physeter Macrocephalus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 15_23] Myxinidae.png') }}" alt = "Myxinidae" />
                 </div>
                 <!-- partie de 2000m à 6000m -->
                 <div class="imgAnimaux">
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 16_23] euplectelles.png') }}" alt = "euplectelles" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 17_23] gorgonocephalus.png') }}" alt = "gorgonocephalus" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 18_23] bathypterois grallator.png') }}" alt = "bathypterois grallator" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 5_6 [espèce 19_23] Hydrolagus Alberti.png') }}" alt = "Hydrolagus Alberti" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 16_23] euplectelles.png') }}" alt = "euplectelles" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 17_23] gorgonocephalus.png') }}" alt = "gorgonocephalus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 18_23] bathypterois grallator.png') }}" alt = "bathypterois grallator" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 19_23] Hydrolagus Alberti.png') }}" alt = "Hydrolagus Alberti" />
                 </div>
                 <!-- partie de 6000m vers le bas de la page  -->
                 <div class="imgAnimaux">
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 20_23] hirondellea gigas.png') }}" alt = "hirondellea gigas" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 21_23] elpidia glacialis.png') }}" alt = "elpidia glacialis" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 22_23] scotoplanes globosa.png') }}" alt = "scotoplanes globosa" />
-                    <img class = "Animaux" src = "{{ asset('elementsJpg/Animaux/._zone 6_6 [espèce 23_23] Nemanthus Annamensis.png') }}" alt = "Nemanthus Annamensis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 20_23] hirondellea gigas.png') }}" alt = "hirondellea gigas" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 21_23] elpidia glacialis.png') }}" alt = "elpidia glacialis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 22_23] scotoplanes globosa.png') }}" alt = "scotoplanes globosa" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 23_23] Nemanthus Annamensis.png') }}" alt = "Nemanthus Annamensis" />
                 </div>
 
             </nav>
@@ -383,6 +382,7 @@
 
 {% endblock %}
 {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"> </script>
     <script type="text/javascript">
 
         //fonction permettera de changer la photo

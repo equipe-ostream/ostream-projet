@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +31,14 @@ class Article
      * @ORM\Column(type="date")
      */
     private $dateCreation;
+
+    /**
+     * @var Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", cascade={"persist"}, inversedBy="article")
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -65,11 +74,25 @@ class Article
         return $this->contenu;
     }
 
-    public function setContenu(string $contenu): self
+    public function setContenu(string $contenu): void
     {
         $this->contenu = $contenu;
+    }
 
-        return $this;
+    /**
+     * @param Categorie $categorie
+     */
+    public function setCategorie(?Categorie $categorie): void
+    {
+        $this->categorie = $categorie;
+    }
+
+    /**
+     * @return Categorie
+     */
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
     }
 
 }

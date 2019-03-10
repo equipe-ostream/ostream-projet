@@ -12,13 +12,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class DefaultController extends AbstractController
 {
-    /**
-     * @Route("/admin", name="dashboard_admin", methods={"GET", "POST"})
-     * @return Response
-     */
-    public function dashboard_admin(): Response
-    {
-        return $this->render('admin/index.html.twig', []);
-    }
+
 }
 

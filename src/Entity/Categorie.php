@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,9 +24,29 @@ class Categorie
     private $titre;
 
     /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="categorie", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $article;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $date_creation;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->article = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->titre;
+    }
 
     public function getId(): ?int
     {

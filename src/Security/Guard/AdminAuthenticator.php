@@ -112,7 +112,7 @@ class AdminAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
-        return new RedirectResponse($this->urlGenerator->generate('dashboard_admin'));
+        return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
     }
 
     /**

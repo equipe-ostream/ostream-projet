@@ -86,7 +86,6 @@ class Utilisateur  implements UserInterface
      */
     private $updatedAt;
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -159,13 +158,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $email
-     * @return Utilisateur
      */
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -178,13 +174,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $statut
-     * @return Utilisateur
      */
-    public function setStatut(string $statut): self
+    public function setStatut(string $statut): void
     {
         $this->statut = $statut;
-
-        return $this;
     }
 
     /**
@@ -197,31 +190,26 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $telephone
-     * @return Utilisateur
      */
-    public function setTelephone(string $telephone): self
+    public function setTelephone(string $telephone): void
     {
         $this->telephone = $telephone;
-
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
      * @param string $username
-     * @return Utilisateur
      */
-    public function setUsername(string $username): Utilisateur
+    public function setUsername(string $username): void
     {
         $this->username = $username;
-        return $this;
     }
 
     /**
@@ -246,21 +234,19 @@ class Utilisateur  implements UserInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getCreated(): \DateTime
+    public function getCreated(): ?\DateTime
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
-     * @return Utilisateur
+     * @param \DateTime|null $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt): Utilisateur
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
-        return $this;
     }
 
     /**

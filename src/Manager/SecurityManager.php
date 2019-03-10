@@ -58,6 +58,7 @@ class SecurityManager
         $this->utilisateurRepository = $utilisateurRepository;
     }
 
+
     /**
      * @param Utilisateur $user
      * @return mixed
@@ -74,6 +75,8 @@ class SecurityManager
         $user->setUsername($user->getEmail());
         $user->setUpdatedAt(new \DateTime());
         $user->setStatut(Utilisateur::STATUS_ENABLED);
+        $password = $this->passwordService->encode($user, $user->getPassword());
+        $user->setPassword($password);
         $this->em->persist($user);
         $this->em->flush();
 

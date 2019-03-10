@@ -1,0 +1,23 @@
+
+
+#map{
+	width: 500px;
+	height: 500px;
+	float: right;
+	
+}
+
+.contenu1{
+     float: left;
+     width: 40%;
+	/*position: absolute;
+	top: 0px;
+	right: 700px;
+	text-align: center;
+	border: 1px;*/
+}
+
+
+
+
+

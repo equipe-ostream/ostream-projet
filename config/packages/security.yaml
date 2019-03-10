@@ -24,8 +24,6 @@ security:
             provider: user
             logout:
                 path: /user/logout
-                target: /
-                invalidate_session: true
             guard:
                 authenticators:
                     - App\Security\Guard\UserAuthenticator
@@ -36,8 +34,6 @@ security:
             provider: admin
             logout:
                 path: /admin/logout
-                target: /
-                invalidate_session: true
             guard:
                 authenticators:
                     - App\Security\Guard\AdminAuthenticator

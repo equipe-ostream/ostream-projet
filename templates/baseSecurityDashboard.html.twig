@@ -71,11 +71,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
 
             <ul class = "nav navbar-nav navbar-left">
-                <li><a class="navbar-brand" href="{{ path('home') }}"><img src = "{{ asset('elementsJpg/LogoBlanc.png') }}" alt = "logo" class = "logo " /></a></li>
+                <li><a class="navbar-brand" href="{{ path('home') }}"><img src = "{{ asset('assets/img/LogoBlanc.png') }}" alt = "logo" class = "logo " /></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/admin">Admin</a></li> <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Deconnexion</a></li>
+                <li><a href="{{ path('register') }}"><span class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
             </ul>
 
         </div>

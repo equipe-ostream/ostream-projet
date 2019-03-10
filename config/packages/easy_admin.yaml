@@ -1,3 +1,76 @@
 easy_admin:
     entities:
-        - App\Entity\Utilisateur
+        Admin:
+            class: App\Entity\Admin
+            form:
+                fields:
+                    - id
+                    - { property: 'nom', icon: 'user' }
+                    - { property: 'email', css_class: 'input-large' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'nom', icon: 'customer' }
+                    - { property: 'email'}
+                    - { property: 'username'}
+                    - { property: 'password'}
+                    - { property: 'adresse', type_options: { required: true } }
+                    - { property: 'telephone', type_options: { required: true } }
+            edit:
+                fields:
+                    - { property: 'nom', icon: 'customer' }
+                    - { property: 'email'}
+                    - { property: 'username'}
+                    - { property: 'password'}
+        Utilisateur:
+            class: App\Entity\Utilisateur
+            form:
+                fields:
+                    - id
+                    - { property: 'nom', icon: 'user' }
+                    - { property: 'email', css_class: 'input-large' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'email', type_options: { required: false } }
+            edit:
+                fields:
+                    - { property: 'nom', icon: 'customer' }
+                    - { property: 'email', help: 'Phone number is preferred' }
+        Categorie:
+            class: App\Entity\Categorie
+            form:
+                fields:
+                    - id
+                    - { property: 'titre', icon: 'user' }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'titre', type_options: { required: false } }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+            edit:
+                fields:
+                    - { property: 'titre', icon: 'customer' }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+        Article:
+            class: App\Entity\Article
+            form:
+                fields:
+                    - id
+                    - { property: 'titre'}
+                    - { property: 'contenu', type: 'textarea' }
+                    - { property: 'date_creation', type: 'date' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'titre', label: 'Mon titre'}
+                    - { property: 'contenu', type: 'textarea', label: 'Mon contenu' }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+                    - { property: 'categorie', label: 'Categories' }
+            edit:
+                fields:
+                    - '-id'
+                    - { property: 'titre', label: 'Mon titre' }
+                    - { property: 'contenu', label: 'Mon contenu' }
+                    - { property: 'categorie', label: 'Categories'}
