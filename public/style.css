@@ -2,6 +2,7 @@ html, body
 {
 	background : linear-gradient(#b2edf4,#084775 );
 	color : white;
+	height: auto;
 	max-width: 100%;
 	overflow-x: hidden;
 	/*margin: auto;
@@ -292,42 +293,17 @@ section{
 	width: 100%;
 	height: 640px;
 }
-/*.partHistoire{
-	/*background-color:white;
-	height:500px;
-	width: 800px;
-	border-radius:15px;
-	/*line-height:60px;*/
-	/* pour permettre le div de partie future être en haut de ce div  */
-	/*position:relative;
-	overflow:hidden;
-}
-.partFutur{
-	vertical-align: middle;
-	position:absolute;
-	border-bottom: 70px solid blue;
-	border-left: 50px solid transparent;
-	border-top-left-radius:30px;
-	border-top-right-radius:15px;
-	/*longueur*/
-	/*height: auto;
-	/* largeur par rapport au div de la partie histoire */
-	/*width: 300px;
-	/*mettre les deux dans la  même ligne*/
-	/*display: inline-block;
-	right:0;
-	color:#ffffff
-}*/
 
 .curved-container {
 	/* position: relative;*/
 	width: 200px;
 	/* margin: auto;*/
+
 	height: 200px;
 	transform: rotate(-72deg);
 	-moz-transform: rotate(-72deg);
 	-webkit-transform: rotate(-72deg);
-	margin-top: 170px;
+	margin-top: 180px;
 
 }
 
@@ -426,7 +402,6 @@ section{
 	-webkit-transform: rotate(100deg);
 }
 .char11 {
-	color: darkblue;
 	text-align: left;
 	padding-bottom: 70px;
 	padding-left: 10px;
@@ -435,8 +410,7 @@ section{
 	-webkit-transform: rotate(110deg);
 }
 .char12 {
-	color: darkblue;
-	text-align: left;
+	text-align: center;
 	padding-bottom: 80px;
 	padding-left: 10px;
 	transform: rotate(120deg);
@@ -444,99 +418,105 @@ section{
 	-webkit-transform: rotate(120deg);
 }
 .char13 {
-	color: darkblue;
-	text-align: left;
-	padding-bottom: 40px;
-	padding-left: 20px;
-	padding-top: 250px;
-	transform: rotate(80deg);
-	-moz-transform: rotate(80deg);
-	-webkit-transform: rotate(80deg);
+	text-align: center;
+	padding-bottom: 80px;
+    padding-left: 1px;
+	padding-top: 100px;
+	transform: rotate(100deg);
+	-moz-transform: rotate(100deg);
+	-webkit-transform: rotate(100deg);
 }
 .char14 {
-	color: darkblue;
-	text-align: left;
-	padding-bottom: 10px;
-	padding-left: 100px;
-	padding-top: 380px;
-	transform: rotate(50deg);
-	-moz-transform: rotate(50deg);
-	-webkit-transform: rotate(50deg);
+	text-align: center;
+	padding-bottom: 50px;
+	padding-left: -10px;
+	padding-top: 200px;
+	transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
 }
 .char15 {
-	color: darkblue;
 	text-align: left;
 	padding-bottom: 20px;
-	padding-left: 100px;
-	padding-top: 370px;
+	padding-left: 150px;
+	padding-top: 245px;
 	transform: rotate(60deg);
 	-moz-transform: rotate(60deg);
 	-webkit-transform: rotate(60deg);
 }
 .char16 {
-	color: darkblue;
 	text-align: left;
-	padding-bottom: 20px;
-	padding-left: 160px;
-	padding-top: 460px;
+	padding-left: 10px;
+	margin-left: 70px;
+	padding-top: 480px;
 	transform: rotate(40deg);
 	-moz-transform: rotate(40deg);
 	-webkit-transform: rotate(40deg);
 }
 .char17 {
-	color: darkblue;
 	text-align: left;
-	padding-bottom: 20px;
-	padding-left: 220px;
-	padding-top: 520px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 175px;
+	padding-top: 470px;
 	transform: rotate(30deg);
 	-moz-transform: rotate(30deg);
 	-webkit-transform: rotate(30deg);
 }
 .char18 {
-	color: darkblue;
 	text-align: left;
-	padding-bottom: 20px;
-	padding-left: 280px;
-	padding-top: 570px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 220px;
+	padding-top: 565px;
 	transform: rotate(20deg);
 	-moz-transform: rotate(20deg);
 	-webkit-transform: rotate(20deg);
 }
 .char19 {
-	color: darkblue;
 	text-align: left;
-	padding-bottom: 20px;
-	padding-left: 340px;
-	padding-top: 610px;
-	transform: rotate(10deg);
-	-moz-transform: rotate(10deg);
-	-webkit-transform: rotate(10deg);
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 350px;
+	padding-top: 430px;
+	transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
 }
 
-#DtImpGauche{
-
-
-}
 #dtGauche{
 	border: 2px groove gainsboro;
-	width: 20%;
-	height: 130px;
+	width: 40%;
+	height: 180px;
 	/*positionnement du div*/
 	position: relative;
-	right: 350px;
-	top: 10px;
+	right: 40px;
+	top: 300px;
 }
-#dtDroite{
+/*#dtDroite{
 	border: 2px groove gainsboro;
-	width: 20%;
-	height: 130px;
-	/*positionnement du div*/
+	width: 25%;
+	height: 180px;
+	/*positionnement du div
 	position: relative;
-	left: 350px;
+	left: 250px;
 	top: 350px;
-
 }
+#dtGauche ul li, #dtDroite ul li{
+	text-align: left;
+}
+
+#titreGauche{
+    border: 2px groove black;
+
+	position: relative;
+	left: -40px;
+	top: -50px;
+}
+#titreFuture{
+	padding: 0;
+	font-size: 60px;
+}*/
 
 
 
