@@ -60,4 +60,12 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/userDashboard", name="userDashboard", methods={"GET","POST"})
+     * @return Response
+     */
+    public function userDashboard() {
+
+        return $this->render( 'security/UserDashBoard.html.twig');
+    }
 }

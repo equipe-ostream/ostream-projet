@@ -104,7 +104,7 @@ class UserAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
-        return new RedirectResponse($this->urlGenerator->generate('dashboard_user'));
+        return new RedirectResponse($this->urlGenerator->generate('userDashboard'));
     }
     /**
      * @param Request                 $request
