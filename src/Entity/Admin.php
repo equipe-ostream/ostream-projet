@@ -39,7 +39,7 @@ class Admin implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adresse;
 
@@ -54,7 +54,7 @@ class Admin implements UserInterface
     private $statut;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $telephone;
 
@@ -66,11 +66,9 @@ class Admin implements UserInterface
     private $username;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="roles", type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
-    private $roles;
+    private $role;
 
     /**
      * @var \DateTime
@@ -85,6 +83,30 @@ class Admin implements UserInterface
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="admin", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $article;
+
+    public function __construct()
+    {
+        $this->statut = Admin::STATUS_ENABLED;
+        $this->role = 'ROLE_SUPER_ADMIN';
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->article = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return $this->email;
+    }
 
     public function getId(): ?int
     {
@@ -213,24 +235,27 @@ class Admin implements UserInterface
     }
 
     /**
-     * Set roles
-     *
-     * @param string $roles
-     * @return Utilisateur
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = serialize($roles);
-        return $this;
-    }
-    /**
-     * Get roles
-     *
      * @return string
      */
-    public function getRoles()
+    public function getRole(): ?string
     {
-        return unserialize($this->roles);
+        return $this->role;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRoles(): array
+    {
+        return [$this->role];
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 
     /**

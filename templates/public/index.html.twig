@@ -61,7 +61,7 @@
 
             <div class = "video">
                <!-- <video  src="" loop="true" autoplay="true" ></video>-->
-                TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte
+                {% if contents %} {{ contents.blockFlux }} {% endif %}
             </div>
         </section>
     </div>
@@ -155,18 +155,13 @@
                 <div id='map'></div>
 
                 <div class="contenu1">
-                    <p>
-                        texte donnant des informations en rapport avec le projet sur lequel l'utilisateur aura cliqué
-                        Non, pas obligatoirement. Si vous dites par la suite que vous voulez vos titres en rouge, ce style aura la priorité et vos titres seront donc en rouge. En revanche, si vous n'indiquez rien de particulier (comme on l'a fait tout à l'heure), alors vos titres hériteront de la couleur blanche.
-                        Cela ne fonctionne pas uniquement pour la couleur, entendons-nous bien. Toutes les propriétés CSS seront héritées : vous pouvez par exemple demander une mise en gras dans la balise body et tous vos titres et paragraphes seront en gras.
-                    </p>
+                        {% if contents %} {{ contents.blockProjet }} {% endif %}
                 </div>
             </div>
 
-
-            <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            {#<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
                     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-                    crossorigin=""></script>
+                    crossorigin=""></script>#}
         </section>
     </div>
 
@@ -181,8 +176,7 @@
                 <div id="Informations" class="Informations">
                     <img id="maPhoto" class="maPhoto" src="{{ asset('assets/img/picture1.png') }}" alt="">
                     <p id="mesInformations" class="mesInformations">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut lectus ipsum. Nam in fringilla magna. Quisque posuere imperdiet lacus non fringilla. Nam vel arcu a leo tincidunt malesuada sit amet eu lectus. Cras gravida sapien ac arcu finibus luctus. Duis sed eros efficitur, fermentum mauris nec, consequat odio. Phasellus in risus a velit pulvinar rhoncus. Integer viverra eros eget elit hendrerit, vulputate mattis mauris convallis. Duis tempus convallis tempor. Fusce sed velit in mi suscipit malesuada non sit amet ligula. Suspendisse potenti. Donec vitae sapien nisl. Nam eu placerat justo, sit amet interdum magna.
-
+                         {% if contents %} {{ contents.blockEquipe }} {% endif %}
                     </p>
                 </div>
 

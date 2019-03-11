@@ -1,34 +1,20 @@
-{% extends 'baseSecurityDashboard.html.twig' %}
+{% extends 'baseSecurity.html.twig' %}
 
 {% block title %}login{% endblock %}
 
 {% block body %}
 
-    <h1>Authentification</h1>
-<div>
-    {{ form_start(form, { attr: { class: 'login-form' } }) }}
-    <div class="row margin">
-        <div class="input-field col s12">
+    <div class="container">
+        {% include 'components/messageFlash.html.twig' %}
+
+        {{ form_start(form, { attr: { class: 'form-signin' } }) }}
+        <div class="row">
+            <h1 class="h3 mb-3 font-weight-normal">Authentification</h1>
             {{ form_widget(form._username) }}
-            <label for="email">username</label>
-        </div>
-    </div>
-    <div class="row margin">
-        <div class="input-field col s12">
             {{ form_widget(form._password) }}
-            <label for="password">Password</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
             {{ form_widget(form.submit) }}
         </div>
-    </div>
-    {{ form_end(form) }}
-</div>
-    <br/>
-    <div>
-        <a href="{{ path('register') }}">Pas encore inscrit ? Créez votre compte </a>
+        {{ form_end(form) }}
     </div>
 
 {% endblock %}

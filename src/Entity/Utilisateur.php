@@ -66,11 +66,9 @@ class Utilisateur  implements UserInterface
     private $username;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="roles", type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
-    private $roles;
+    private $role;
 
     /**
      * @var \DateTime
@@ -85,6 +83,43 @@ class Utilisateur  implements UserInterface
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Don", mappedBy="utilisateur", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $don;
+
+    /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Abonnement", mappedBy="utilisateur", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $abonnement;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Preferences", cascade={"persist"})
+     */
+    private $preferences;
+
+    public function __construct()
+    {
+        $this->statut = Utilisateur::STATUS_ENABLED;
+        $this->role = 'ROLE_USER';
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->don = new ArrayCollection();
+        $this->abonnement = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return $this->email;
+    }
 
     public function getId(): ?int
     {
@@ -101,13 +136,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $nom
-     * @return Utilisateur
      */
-    public function setNom(string $nom): self
+    public function setNom(string $nom): void
     {
         $this->nom = $nom;
-
-        return $this;
     }
 
     /**
@@ -120,13 +152,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $password
-     * @return Utilisateur
      */
-    public function setPassword(string $password): self
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
     /**
@@ -139,13 +168,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $adresse
-     * @return Utilisateur
      */
-    public function setAdresse(string $adresse): self
+    public function setAdresse(string $adresse): void
     {
         $this->adresse = $adresse;
-
-        return $this;
     }
 
     /**
@@ -213,24 +239,27 @@ class Utilisateur  implements UserInterface
     }
 
     /**
-     * Set roles
-     *
-     * @param string $roles
-     * @return Utilisateur
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = serialize($roles);
-        return $this;
-    }
-    /**
-     * Get roles
-     *
      * @return string
      */
-    public function getRoles()
+    public function getRole(): ?string
     {
-        return unserialize($this->roles);
+        return $this->role;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRoles(): array
+    {
+        return [$this->role];
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 
     /**
@@ -319,5 +348,21 @@ class Utilisateur  implements UserInterface
     public function supportsClass($class)
     {
         // TODO: Implement supportsClass() method.
+    }
+
+    /**
+     * @param Preferences|null $preferences
+     */
+    public function setPreferences(Preferences $preferences = null)
+    {
+        $this->preferences = $preferences;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreferences()
+    {
+        return $this->preferences;
     }
 }

@@ -14,6 +14,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -39,9 +40,27 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ path('show_profil', {'id': app.user.id }) }}">
                             <span data-feather="file"></span>
                             Profil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('preferences_show', {'id': app.user.id }) }}">
+                            <span data-feather="file"></span>
+                            Flux
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('projets') }}">
+                            <span data-feather="file"></span>
+                            Projet
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('don_user', {'id': app.user.id }) }}">
+                            <span data-feather="file"></span>
+                            Don
                         </a>
                     </li>
                 </ul>
@@ -49,6 +68,9 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="container">
+                {% include 'components/messageFlash.html.twig' %}
+            </div>
             {% block body %}{% endblock %}
         </main>
     </div>

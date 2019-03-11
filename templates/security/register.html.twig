@@ -1,51 +1,28 @@
-{% extends 'baseSecurityDashboard.html.twig' %}
+{% extends 'baseSecurity.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
 
-    <h1>Créez votre compte :</h1>
-    <div class="col-md-6">
-        {{ form_start(form, { attr: { class: 'login-form' } }) }}
-        <div class="col-md-12">
-            <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt"></i>
-                {{ form_errors(form.nom) }}
-                {{ form_widget(form.nom) }}
+    <div class="container">
+        {% include 'components/messageFlash.html.twig' %}
+
+        {{ form_start(form, { attr: { class: 'form-signin' } }) }}
+        <div class="row">
+            <h1 class="h3 mb-3 font-weight-normal">Créez votre compte :</h1>
+            <div class="alert alert-danger">
+                {{ form_errors(form.password.first) }}
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt"></i>
-                {{ form_errors(form.email) }}
-                {{ form_widget(form.email) }}
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt"></i>
-                <span class="red-text">{{ form_errors(form.password.first) }} </span>
-                {{ form_widget(form.password.first) }}
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="input-field col s12">
-                <i class="material-icons prefix pt-5 yellowcrypt"></i>
-                {{ form_widget(form.password.second) }}
-            </div>
+            {{ form_widget(form.nom) }}
+            {{ form_widget(form.email) }}
+            {{ form_widget(form.password.first) }}
+            {{ form_widget(form.password.second) }}
+            {{ form_widget(form.submit) }}
         </div>
         <div class="row">
-            <div class="input-field col s12 mb-5">
-                {{ form_widget(form.submit) }}
-            </div>
+            <a href="{{ path('login') }}">Déjà inscrit ? Identifiez-vous </a>
         </div>
         {{ form_end(form) }}
     </div>
-    <br/>
-    <div>
-        <a href="{{ path('login') }}">Déjà inscrit ? Identifiez-vous </a>
-    </div>
-
-
 
 {% endblock %}

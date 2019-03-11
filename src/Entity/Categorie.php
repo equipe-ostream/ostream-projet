@@ -43,6 +43,9 @@ class Categorie
         $this->article = new ArrayCollection();
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
         return $this->titre;

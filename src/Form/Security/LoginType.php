@@ -28,19 +28,20 @@ class LoginType extends AbstractType
             ->add('_username', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Email',
-
+                    'class' => 'form-control'
                 ]
             ])
             ->add('_password', PasswordType::class, [
                 'attr' => [
                     'placeholder' => 'Password',
-
+                    'class' => 'form-control'
                 ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Connexion',
-
-
+                'attr' => [
+                    'class' => 'btn btn-lg btn-primary btn-block',
+                ]
             ])
         ;
     }

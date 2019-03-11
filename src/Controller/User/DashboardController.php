@@ -24,30 +24,11 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/user/Profil", name="user_profil", methods={"GET","POST"})
-     * @return Response
-     */
-    public function profil() {
-
-        return $this->render( 'user/profil.html.twig');
-    }
-
-    /**
-     * @Route("/user/Flux", name="flux", methods={"GET","POST"})
-     * @return Response
-     */
-    public function flux() {
-
-        return $this->render( 'user/flux.html.twig');
-    }
-
-    /**
      * @Route("/user/projets", name="projets", methods={"GET","POST"})
      * @return Response
      */
     public function projets() {
-
-        return $this->render( 'user/projets.html.twig');
+        return $this->render( 'user/projet/index.html.twig');
     }
 
 }

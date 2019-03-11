@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -39,6 +41,14 @@ class Article
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $categorie;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", cascade={"persist"}, inversedBy="article")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $admin;
 
     public function getId(): ?int
     {
@@ -93,6 +103,22 @@ class Article
     public function getCategorie(): ?Categorie
     {
         return $this->categorie;
+    }
+
+    /**
+     * @param Admin $admin
+     */
+    public function setAdmin(Admin $admin): void
+    {
+        $this->admin = $admin;
+    }
+
+    /**
+     * @return Admin|null
+     */
+    public function getAdmin(): ?Admin
+    {
+        return $this->admin;
     }
 
 }

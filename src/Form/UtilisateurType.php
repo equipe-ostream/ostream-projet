@@ -2,33 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Don;
+use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DonType extends AbstractType
+class UtilisateurType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', TextType::class, [
+            ->add('adresse', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Type',
+                    'placeholder' => 'adresse',
                     'class' => 'form-control'
                 ]
             ])
-            ->add('valeur', NumberType::class, [
+            ->add('telephone', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'valeur',
+                    'placeholder' => 'telephone',
                     'class' => 'form-control'
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider le don',
+                'label' => 'Editer',
                 'attr' => [
                     'class' => 'btn btn-primary btn-block',
                 ]
@@ -39,7 +38,7 @@ class DonType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Don::class,
+            'data_class' => Utilisateur::class,
         ]);
     }
 }

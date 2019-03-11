@@ -26,6 +26,14 @@ class Don
      */
     private $valeur;
 
+    /**
+     * @var Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur", cascade={"persist"}, inversedBy="don")
+     * @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $utilisateur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,5 +61,21 @@ class Don
         $this->valeur = $valeur;
 
         return $this;
+    }
+
+    /**
+     * @param Utilisateur $utilisateur
+     */
+    public function setUtilisateur(Utilisateur $utilisateur): void
+    {
+        $this->utilisateur = $utilisateur;
+    }
+
+    /**
+     * @return Utilisateur|null
+     */
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
     }
 }

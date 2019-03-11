@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use App\Entity\Preferences;
 use App\Entity\Utilisateur;
 use App\Repository\UtilisateurRepository;
 use App\Services\MessageService;
@@ -70,13 +71,15 @@ class SecurityManager
             return $this->messageService->addError('Cette adresse e-mail est déjà utilisée');
         }
 
-        $user->setRoles(['ROLE_USER']);
+        $preferences = new Preferences();
+        $user->setRole('ROLE_USER');
         $user->setCreatedAt(new \DateTime());
         $user->setUsername($user->getEmail());
         $user->setUpdatedAt(new \DateTime());
         $user->setStatut(Utilisateur::STATUS_ENABLED);
         $password = $this->passwordService->encode($user, $user->getPassword());
         $user->setPassword($password);
+        $user->setPreferences($preferences);
         $this->em->persist($user);
         $this->em->flush();
 

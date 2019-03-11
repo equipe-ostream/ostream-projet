@@ -1,0 +1,32 @@
+{% extends 'baseDashboard.html.twig' %}
+
+{% block title %}Don{% endblock %}
+
+{% block body %}
+    <h1>Don</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for don in dons %}
+            <tr>
+                <td>{{ don.id }}</td>
+                <td>{{ don.type }}</td>
+                <td>{{ don.valeur }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('don_new') }}" class="btn btn-primary"><i class="fa fa-send"></i> Faire un don</a>
+{% endblock %}

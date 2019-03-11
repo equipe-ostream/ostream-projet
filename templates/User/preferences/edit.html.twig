@@ -1,0 +1,9 @@
+{% extends 'baseDashboard.html.twig' %}
+
+{% block title %}Edit Preferences{% endblock %}
+
+{% block body %}
+    <h1>Editer mes preferences</h1>
+
+    {{ include('user/preferences/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}
