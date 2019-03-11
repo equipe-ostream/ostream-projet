@@ -29,7 +29,7 @@ class DashboardController extends AbstractController
      */
     public function profil() {
 
-        return $this->render( 'security/UserProfil.html.twig');
+        return $this->render( 'user/profil.html.twig');
     }
 
     /**
@@ -38,7 +38,7 @@ class DashboardController extends AbstractController
      */
     public function flux() {
 
-        return $this->render( 'security/UserFlux.html.twig');
+        return $this->render( 'user/flux.html.twig');
     }
 
     /**
@@ -47,7 +47,7 @@ class DashboardController extends AbstractController
      */
     public function projets() {
 
-        return $this->render( 'security/UserProjets.html.twig');
+        return $this->render( 'user/projets.html.twig');
     }
 
 }
