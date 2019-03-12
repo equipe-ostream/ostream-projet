@@ -13,16 +13,24 @@
     <div class="headd " >
            <!-- <div class ="Menu">  Le menu doit être par dessus l'image de vague-->
                 <img class = "logo" src = "{{ asset('assets/img/LogoBlanc.png') }}" alt = "logo" />
+
                 <nav class ="elements"> <!-- pour le menu principal du site-->
                     <a href=#flux>Flux</a> <!-- liens vers des ancres de la MEME page-->
                     <a href = "#concept">Concept </a>
                     <a href = "#projets"> Projets </a>
                     <a href = "#equipe"> Equipe </a>
                     <a href = "#histoire"> Histoire </a>
-                    <a href = "https://www.helloasso.com/"> Agir </a>
-                    <a href = "https://www.helloasso.com/"> Panier </a>
+                    <a href = "https://www.helloasso.com/" id = "agir" > Agir </a>
+                    <a href = "https://www.helloasso.com/" id = "panier" > Panier </a>
                     <a href = "{{ path('login') }}"> Connexion </a>
                 </nav>
+
+        <div class="rechercher" >
+            <input type="text" class="TermeRecherche" >
+            <button type="submit" class="BouttonRechercher">
+                <img src="{{ absolute_url('assets/img/searchIcone.png') }}" id="iconerech" alt = "search">
+            </button>
+        </div>
 
            <!-- </div>-->
         </div>
@@ -152,7 +160,9 @@
         <section  class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
 
             <div class="contenant" >
-                <div id='map'></div>
+                <div id='map'>
+                    <img src = "{{ asset('assets/img/fondsoceans.jpg') }}" id = "carte" alt = "map" >
+                </div>
 
                 <div class="contenu1">
                         {% if contents %} {{ contents.blockProjet }} {% endif %}
@@ -164,6 +174,12 @@
                     crossorigin=""></script>#}
         </section>
     </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
     <!-- PARTIE MARIAMA-->
     <div id = "equipe" class="parties">
@@ -253,27 +269,27 @@
                 </tr>
             </table>-->
             <!-- partie calendrier -->
-            <div class="curved-container contai">
-                    <span class="char0">03 Fév 2016</span>
-                    <span class="char1">02</span>
-                    <span class="char2">01 Janvier</span>
-                    <span class="char3">31</span>
-                    <span class="char4">30 Déc 2015</span>
-                    <span class="char5">29</span>
-                    <span class="char6">28 Nov</span>
-                    <span class="char7">27</span>
-                    <span class="char8">26 Oct 2014</span>
-                    <span class="char9">25</span>
-                    <span class="char10">24 Sept</span>
-                    <span class="char11">Nov</span>
-                    <span class="char12">31</span>
-                    <span class="char13">30 Oct</span>
-                    <span class="char14">29</span>
-                    <span class="char15">28 Sept 2019</span>
-                    <span class="char16">27</span>
-                    <span class="char17">26 Août </span>
-                    <span class="char18">25</span>
-                <span class="char19">24 Juill 2018</span>
+            <div class="curved-container">
+                <span class="char0">03 Fév 2016</span>
+                <span class="char1">02</span>
+                <span class="char2">01 Janvier</span>
+                <span class="char3">31</span>
+                <span class="char4">30 Déc 2015</span>
+                <span class="char5">29</span>
+                <span class="char6">28 Nov</span>
+                <span class="char7">27</span>
+                <span class="char8">26 Oct 2014</span>
+                <span class="char9">25</span>
+                <span class="char10">24 Sept</span>
+                <span class="char11">Nov</span>
+                <span class="char12">31</span>
+                <span class="char13">Oct 30</span>
+                <span class="char14">29</span>
+                <span class="char15">2019 Sept 28</span>
+                <span class="char16">27</span>
+                <span class="char17">Août 26 </span>
+                <span class="char18">25</span>
+                <span class="char19">2018 Juill 24</span>
             </div>
             <!-- dates importantes côté gauche -->
             <div id="dtGauche">
@@ -350,26 +366,32 @@
     </div>
 
     <footer class = "piedPage">  <!--pied de page -->
-        <table>
-            <tr>   <!-- première ligne-->
-                <td>  <!-- début première cellule -->
-                    <strong>Contact</strong>
-                </td> <!-- fin première cellule -->
-            </tr>  <!--fin première ligne-->
 
-            <tr>
-                <td>Adresse</td>
-            </tr>
+        <div class="footer" >
+            <p id="pied" >[Mentions légales]
+                <table class = plan>
+                <tr>
+                    <td><span> PLAN DU SITE </span></td>
+                </tr>
+                <tr>
+                    <td>Flux</td>
+                </tr>
+                <tr>
+                    <td>Concept</td>
+                </tr>
+                <tr>
+                    <td>Projets</td>
+                </tr>
+                <tr>
+                    <td>Equipe</td>
+                </tr>
+                <tr>
+                    <td>Histoire</td>
+                </tr>
+                </table>
 
-            <tr>
-                <td>Téléphone</td>
-            </tr>
-
-            <tr>
-                <td><a href = "mailto:adrien.landa@oceanstream.fr">Nous écrire</a></td>
-            </tr>
-
-        </table>
+            </p>
+        </div>
 
     </footer>
 
