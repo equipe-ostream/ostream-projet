@@ -1,0 +1,7 @@
+form:
+    user:
+        email: 'Email'
+        nom: 'Name'
+        password: 'Password'
+        passwordConfirm: 'Confirmed password'
+        enregister: 'Submit'

@@ -3,275 +3,485 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/style_map.css') }}" >
 {% endblock %}
 
 
 {% block body %}
 
+    <div class="headd " >
+           <!-- <div class ="Menu">  Le menu doit être par dessus l'image de vague-->
+                <img class = "logo" src = "{{ asset('assets/img/LogoBlanc.png') }}" alt = "logo" />
+
+                <nav class ="elements"> <!-- pour le menu principal du site-->
+                    <a href=#flux>Flux</a> <!-- liens vers des ancres de la MEME page-->
+                    <a href = "#concept">Concept </a>
+                    <a href = "#projets"> Projets </a>
+                    <a href = "#equipe"> Equipe </a>
+                    <a href = "#histoire"> Histoire </a>
+                    <a href = "https://www.helloasso.com/" id = "agir" > Agir </a>
+                    <a href = "https://www.helloasso.com/" id = "panier" > Panier </a>
+                    <a href = "{{ path('login') }}"> Connexion </a>
+                </nav>
+
+        <div class="rechercher" >
+            <input type="text" class="TermeRecherche" >
+            <button type="submit" class="BouttonRechercher">
+                <img src="{{ absolute_url('assets/img/searchIcone.png') }}" id="iconerech" alt = "search">
+            </button>
+        </div>
+
+           <!-- </div>-->
+        </div>
+
+    <div class="gauche" >
+        {% block sidebar1 %}
+
+            <nav id="menu" class = "menuGauche">
+
+                <p>
+                    <img class = "corail" src = "{{ asset('assets/img/Corail-Noir.png') }}" alt = "corail" />
+                </p>
+                <div class="elementMenuGauche">
+                    <a href="#flux">Flux</a>
+                    <a href="#concept">Concept</a>
+                    <a href="#projets">Projets</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#histoire">Histoire</a>
+                    <a href="https://www.helloasso.com/">Agir</a>
+                    <a href="https://www.helloasso.com/">Panier</a>
+                    <a href="{{ path('login') }}">Connexion</a>
+
+                </div>
+            </nav>
+
+        {% endblock %}
+
+    </div>
+
+    <div class="mainBody">
+    <!-- PARTIE ELODIE -->
+    <div id = flux class="parties">
+
+        <h1 class = "titreSection1 TitreSection"><span id="SousTitre"> Flux </span></h1>
+        <section  class ="s1"> <!-- simulation du concept : vidéo du flux en image de fond -->
+
+            <div class = "video">
+               <!-- <video  src="" loop="true" autoplay="true" ></video>-->
+                {% if contents %} {{ contents.blockFlux }} {% endif %}
+            </div>
+        </section>
+    </div>
+
+    <!-- PARTIE WILLY -->
+
+    <div id = concept class="parties">
+
+        <h1 class = "titreSection2 TitreSection"><span id="SousTitre"> Concept </span> </h1>
+
+        
+        
+        <figure  class = "s2">  <!-- Explication du concept en détails -->
+
+            <table class = "cycle">
+                <tr>   <!-- première ligne-->
+
+                    <td>  <!-- début première cellule -->
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite-haut.png') }}" alt = "fleche" class = "fleche " />
+                    </td> <!-- fin première cellule -->
+
+                    <td>
+                        <img src = "{{ asset('assets/img/Underwater-camera.png') }}" alt = "camera" id="camera" onclick="changeTextCamera()" class = "camera cyclephoto" />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('assets/img/Diffusion.png') }}" alt = "diffusion" onclick="changeTextDiffusion()" class = "diffusion cyclephoto" />
+                    </td>
+                    <td>
+                        <!-- ici flèche-->
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+
+                </tr>  <!--fin première ligne-->
+
+                <tr>
+                    <td>
+                        <img src = "{{ asset('assets/img/Corail.png') }}" alt = "corailC" class = "corailC cyclephoto" onclick="changeTextCorail()" title = "Le Corail : blablabla" />
+                    </td>
+                    <td colspan="3" ></td>
+                    <td>
+                        <img src = "{{ asset('assets/img/Conscience.png') }}" alt = "conscience" onclick="changeTextConscience()" class = "conscience cyclephoto" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src = "{{ asset('assets/img/fleches/fleche-gauche-haut.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('assets/img/Developpement.png') }}" alt = "developpement" onclick="changeTextDeveloppement()" class = "developpement cyclephoto" />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('assets/img/fleches/fleche-gauche.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                    <td>
+                        <img src = "{{ asset('assets/img/Financement.png') }}" alt = "financement" onclick="changeTextFinancement()" class = "financement cyclephoto" />
+                    </td>
+                    <td>
+                        <!--ici fleche-->
+                        <img src = "{{ asset('assets/img/fleches/fleche-droite.png') }}" alt = "fleche" class = "fleche " />
+                    </td>
+                </tr>
+            </table> <br/>
+            <!--
+            src : chemin relatif de l'image,
+            alt : affiché si l'image ne peut se charger,
+            title : s'affiche quand on passe la souris sur l'image
+            -->
+
+            <!-- <figcaption>Notre cycle de fonctionnement</figcaption> Légende de la figure -->
+        </figure>
+        </figure>
+
+        <!-- cette partie est consacrée pour l'affichage des informations concernant chaque icon dans le cycle -->
+        <center><div class="cycleInformation" id="cycleInformation">
+
+            </div></center>
+        </section>
+    </div>
+
+    <!-- PARTIE AURELIE -->
+    <div id = projets class="parties">
+        <h1 class = "titreSection3 TitreSection"> <span id="SousTitre"> Projets </span> </h1>
+        <section  class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
+
+            <div class="contenant" >
+                <div id='map'>
+                    <img src = "{{ asset('assets/img/fondsoceans.jpg') }}" id = "carte" alt = "map" >
+                </div>
+
+                <div class="contenu1">
+                        {% if contents %} {{ contents.blockProjet }} {% endif %}
+                </div>
+            </div>
+
+            {#<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+                    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+                    crossorigin=""></script>#}
+        </section>
+    </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+    <!-- PARTIE MARIAMA-->
+    <div id = "equipe" class="parties">
+        <h1 class ="titreSection4 TitreSection" ><span id="SousTitre">Equipe </span></h1><br>
+        <section   class = "equipe">
+
+            <div style="width: 80%">
+                <!--  partie pour l'affichage de toutes les informations [lors du clique] concernant une personne,
+                       selon la photo appuyée par l'utilisateur.  -->
+                <div id="Informations" class="Informations">
+                    <img id="maPhoto" class="maPhoto" src="{{ asset('assets/img/picture1.png') }}" alt="">
+                    <p id="mesInformations" class="mesInformations">
+                         {% if contents %} {{ contents.blockEquipe }} {% endif %}
+                    </p>
+                </div>
+
+                <!--  partie pour l'affichage de toutes les photos des membres de l'équipe.  -->
+                <div id="photosEquipe" class="photosEquipe">
+                    <table>
+                        <tr>
+                            <td><img src="{{ asset('assets/img/picture1.png') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture1()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/picture2.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture2()" class="photos"> </td>
+                        </tr>
+                        <tr>
+                            <td><img src="{{ asset('assets/img/picture3.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture3()" class="photos"></td>
+                            <td><img src="{{ asset('assets/img/picture1.png') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture4()" class="photos"></td>
+                        </tr>
+                        <tr>
+                            <td> <img src="{{ asset('assets/img/picture1.png') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture5()" class="photos"></td>
+                            <td> <img src="{{ asset('assets/img/picture3.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture6()" class="photos"></td>
+                        </tr>
+                        <tr>
+                            <td> <img src="{{ asset('assets/img/picture2.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture7()" class="photos">  </td>
+                            <td> <img src="{{ asset('assets/img/picture2.jpg') }}" alt=""  onClick="changePhoto(this.src), changeTextPicture8()" class="photos">  </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PARTIE FX-->
+    <div id = histoire class="parties">
+        <h1 class ="titreSection5 TitreSection"><span id="SousTitre">Histoire</span></h1>
+        <section   class = "s5">
 
 
-    <header class = "enTete">
-        <p>
-            <img class = "logo" src = "{{ absolute_url('elementsJpg/LogoBlanc.png') }}" alt = "logo" />
-        </p>
+           <!-- <table class="mytable">
+               <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(110deg);">
+                    <td style="text-align:left;padding-left:370px;padding-bottom: 250px;"><span>Oct 30</span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(110deg);">
+                    <td style="text-align:left;padding-left:370px;padding-bottom: 250px;"><span>31 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(120deg);">
+                    <td style="text-align:right;"><span>31 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(110deg);">
+                    <td style="text-align:left;padding-left:370px;padding-bottom: 250px;"><span> 24 Sept </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(90deg);">
+                    <td style="text-align:left;padding-left:215px;padding-bottom: 50px;"><span>25</span><br/><span> 26 Oct 2014 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(80deg);">
+                    <td style="text-align: left; padding-left: 150px;padding-bottom: 20px;" ><span>27 </span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(70deg); ">
+                    <td style="padding-bottom: 20px;text-align: left; padding-left: 110px;"><span>28  Nov.</span></td>
+                </tr>
+                <tr style="writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(60deg);">
+                    <td style="text-align: left; padding-left: 80px;" ><span>29</span></td>
+                </tr>
+                <tr style="padding-top: 25px;writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(50deg);">
+                    <td style="text-align: left; padding-left: 55px;"><span>30 Déc. 2015</span></td>
+                </tr>
+                <tr style="padding-top: 30px;writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(40deg);">
+                    <td style=" text-align: left; padding-left: 35px;"><span>31</span></td>
+                </tr>
+                <tr style="padding-top: 10px; writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(30deg);">
+                    <td style="text-align: left; padding-left: 15px;"><span>01  Jan.</span></td>
+                </tr>
+                <tr style=" padding-top: 10px; writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(20deg); text-align: left; padding-left: 5px;">
+                    <td><span>02</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left"><span>O3 Février 2016</span></td>
+                </tr>
+            </table>-->
+            <!-- partie calendrier -->
+            <div class="curved-container">
+                <span class="char0">03 Fév 2016</span>
+                <span class="char1">02</span>
+                <span class="char2">01 Janvier</span>
+                <span class="char3">31</span>
+                <span class="char4">30 Déc 2015</span>
+                <span class="char5">29</span>
+                <span class="char6">28 Nov</span>
+                <span class="char7">27</span>
+                <span class="char8">26 Oct 2014</span>
+                <span class="char9">25</span>
+                <span class="char10">24 Sept</span>
+                <span class="char11">Nov</span>
+                <span class="char12">31</span>
+                <span class="char13">Oct 30</span>
+                <span class="char14">29</span>
+                <span class="char15">2019 Sept 28</span>
+                <span class="char16">27</span>
+                <span class="char17">Août 26 </span>
+                <span class="char18">25</span>
+                <span class="char19">2018 Juill 24</span>
+            </div>
+            <!-- dates importantes côté gauche -->
+            <div id="dtGauche">
+                <h5>Dates Importantes :</h5>
+                <p id="DtImpGauche"> - 25/01/15 : texte texte texte texte <br/>
+                - 31/02/15 : texte texte texte <br/>
+                    - 05/04/16 : texte texte texte texte texte
+                </p>
+
+            </div>
+            <!-- dates importantes côté droit -->
+            <div id="dtDroite">
+                <h5>Dates Importantes :</h5>
+                <p id="DtImpDroite"> - 04/02/19 : texte texte texte texte <br/>
+                    - 23/12/120 : texte texte texte <br/>
+                    - 02/11/21 : texte texte texte texte texte
+                </p>
+            </div>
 
 
-        <div class ="Menu"> <!-- Le menu doit être par dessus l'image de vague -->
-            <nav class ="elements"> <!-- pour le menu principal du site -->
 
-                <div> <a href=#flux>Flux</a> </div> <br/> <!-- liens vers des ancres de la MEME page -->
-                <div><a href = "#concept">Concept </a> </div><br/>
-                <div><a href = "#projets"> Projets </a> </div><br/>
-                <div><a href = "#equipe"> Equipe </a> </div><br/>
-                <div><a href = "#histoire"> Histoire </a> </div><br/>
-                <div><a href = "/register"> S'inscrire ou se connecter </a> </div><br/>
 
+        </section>
+    </div>
+</div>
+
+    <div class="animaux">
+        {% block sidebar2 %}
+
+            <nav id="menu" class = "">
+                <!-- partie de 0m à 200m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('assets/img/._zone 2_6 [espèce 1_23] chrysaora hysoscella.png')}}" alt = "chrysaora hysoscella" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 2_23] zanclus cornutus.png') }}" alt = "zanclus cornutus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 3_23] Macrocystis Pyrifera.png') }}" alt = "Macrocystis Pyrifera" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 4_23] Balaenoptera Musculus.png') }}" alt = "Balaenoptera Musculus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 2_6 [espèce 5_23] carcharodon carcharias.png') }}" alt = "carcharodon carcharias" />
+                 </div>
+                <!--  partie de 200m à 1000m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 6_23] squatina australis.png') }}" alt = "squatina australis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 7_23] Galatea Squamifera.png') }}" alt = "Galatea Squamifera" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 8_23] Vampyroteuthis Infernalis.png') }}" alt = "Vampyroteuthis Infernalis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 9_23] Idiacanthus Fasciola.png') }}" alt = "Idiacanthus Fasciola" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 3_6 [espèce 10_23] Bathocyroe  Fosteri.png') }}" alt = "Bathocyroe  Fosteri" />
+                </div>
+                <!-- partie de 1000m à 2000m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 11_23] Melanocetus johnsonii.png') }}" alt = "Melanocetus johnsonii" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 12_23] Architeuthis Dux.png') }}" alt = "Architeuthis Dux" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 13_23] Benthoctopus Levis.png') }}" alt = "Benthoctopus Levis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 14_23] Physeter Macrocephalus.png') }}" alt = "Physeter Macrocephalus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 4_6 [espèce 15_23] Myxinidae.png') }}" alt = "Myxinidae" />
+                </div>
+                <!-- partie de 2000m à 6000m -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 16_23] euplectelles.png') }}" alt = "euplectelles" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 17_23] gorgonocephalus.png') }}" alt = "gorgonocephalus" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 18_23] bathypterois grallator.png') }}" alt = "bathypterois grallator" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 5_6 [espèce 19_23] Hydrolagus Alberti.png') }}" alt = "Hydrolagus Alberti" />
+                </div>
+                <!-- partie de 6000m vers le bas de la page  -->
+                <div class="imgAnimaux">
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 20_23] hirondellea gigas.png') }}" alt = "hirondellea gigas" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 21_23] elpidia glacialis.png') }}" alt = "elpidia glacialis" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 22_23] scotoplanes globosa.png') }}" alt = "scotoplanes globosa" />
+                    <img class = "Animaux" src = "{{ asset('assets/img/Animaux/._zone 6_6 [espèce 23_23] Nemanthus Annamensis.png') }}" alt = "Nemanthus Annamensis" />
+                </div>
 
             </nav>
-        </div>
 
-
-        <p>
-            <img  class = "imageEnTete" src = "{{ asset('elementsJpg/photoVagueFinale.jpg') }}" title = "imageVague" alt = "photoVague"/>
-        </p>
-
-    </header>
-
-
-{% block sidebar %}
-    <nav id="menu" class = "menuGauche">
-      <br/>
-        <p>
-            <img class = "corail" src = "{{ asset('elementsJpg/ELEMENTS-AD/Logo/Corail-Noir.png') }}" alt = "corail" />
-        </p>
-        <div class="elementMenuGauche">
-                <div><a href="#flux">Flux</a></div> <br/>
-                <div><a href="#concept">Concept</a></div> <br/>
-                <div><a href="#projets">Projets</a></div> <br/>
-                <div><a href="#equipe">Equipe</a></div> <br/>
-                <div><a href="#histoire">Histoire</a></div> <br/>
-        </div>
-    </nav>
-   {% endblock %}
-
-
-
-
-    <div class = "conteneur1">   <!-- PARTIE ELODIE -->
-        <div>
-            <h1 class = "titreSection1"> Flux </h1>
-            <section id = flux class ="s1"> <!-- simulation du concept : vidéo du flux en image de fond -->
-                <div class = "video">
-
-                    <video  src="{{ asset('videoFlux.mp4') }}" loop="true" autoplay="true" ></video>
-                    TexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexteTexte
-                </div>
-            </section>
-        </div>
+        {% endblock %}
 
     </div>
-
-
-
-
-    <div class = "conteneur2">     <!-- PARTIE WILLY -->
-
-        <div>
-            <h1 class = "titreSection2"> Concept </h1>
-                <section id = concept class = "s2">  <!-- Explication du concept en détails -->
-
-                    <p>
-                        <span class = "titreItem"> <?php echo $TitreConceptItem; ?> </span>
-
-                        <figure>
-
-
-                            <table class = "cycle">
-                                <tr>   <!-- première ligne-->
-                                    <td>  <!-- début première cellule -->
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite-haut.png') }}" alt = "fleche" class = "fleche" />
-                                    </td> <!-- fin première cellule -->
-
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Underwater-camera.png') }}" alt = "camera" class = "camera" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche droite.png') }}" alt = "fleche" class = "fleche" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Diffusion.png') }}" alt = "diffusion" class = "diffusion" />
-                                    </td>
-                                    <td>
-                                        <!-- ici flèche-->
-                                    </td>
-
-                                </tr>  <!--fin première ligne-->
-
-                                <tr>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Corail.png') }}" alt = "corailC" class = "corailC" title = "Le Corail : blablabla" />
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Conscience.png') }}" alt = "conscience" class = "conscience" />
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche-haut.png') }}" alt = "fleche" class = "fleche" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Developpement.png') }}" alt = "developpement" class = "developpement" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Flèches/Flèche gauche.png') }}" alt = "fleche" class = "fleche" />
-                                    </td>
-                                    <td>
-                                        <img src = "{{ asset('elementsJpg/ELEMENTS-AD/Concept/Financement.png') }}" alt = "financement" class = "financement" />
-                                    </td>
-                                    <td>
-                                        <!--ici fleche-->
-                                    </td>
-                                </tr>
-
-
-                            </table>
-                            <!--
-                            src : chemin relatif de l'image,
-                            alt : affiché si l'image ne peut se charger,
-                            title : s'affiche quand on passe la souris sur l'image
-                            -->
-
-
-                            <figcaption>Notre cycle de fonctionnement</figcaption> <!--Légende de la figure -->
-                            <br/>
-                        </figure>
-                    </p>
-                </section>
-        </div>
-
-    </div>
-
-
-
-
-
-    <div class = "conteneur3">    <!-- PARTIE AURELIE -->
-
-        <div>
-            <h1 class = titreSection3> Projets </h1>
-            <section id = projets class = "s3"> <!-- Carte du monde interactive : infos quand on clique sur chaque pin + possibilité d'en ajouter pour les administrateurs -->
-
-                <span> <?php echo $titrePin; ?> </span>
-                <p>
-                    <figure>
-                        <img class = "carte" src = "{{ asset('elementsJpg/carteFondsMarins.jpg') }}" alt = "corail" />
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        textetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                        <br/>
-                        <!--
-                        Ceci est le texte entourant la carte du monde (à gauche) : varie selon le pin où on a cliqué => boucle if sur le fichier controller ?
-                        src : chemin relatif de l'image,
-                        alt : affiché si l'image ne peut se charger,
-                        title : s'affiche quand on passe la souris sur l'image
-
-                         -->
-                    </figure>
-                </p>
-            </section>
-        </div>
-    </div>
-
-
-
-
-
-
-    <div class = conteneur4>     <!-- PARTIE MARIAM -->
-        <div>
-            <h1 class ="titreSection4"> Equipe </h1>
-            <section  id = equipe class = "s4">
-                <!--faire deux boîtes verticales l'une à côté de l'autre : à gauches les photos cliquables et à droite
-                le profil détaillé correspondant à la personne -->
-
-                <!-- ce qui suit est dans la boîte de droite -->
-                <p>
-                    <figure>
-
-                        <span> <?php echo $nomPersonneEquipe; ?> </span>
-                    </figure>
-                    <br/>
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                </p>
-
-
-            </section>
-
-        </div>
-    </div>
-
-
-
-
-
-
-    <div class = "conteneur5">    <!-- PARTIE FX-->
-        <div>
-            <h1 class ="titreSection5"> Histoire </h1>
-            <section  id = histoire class = "s5">
-                <p>
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-                    textetextetextetextetextetextetextetextetextetextetextetextetextetexte
-
-                </p>
-
-
-            </section>
-        </div>
-    </div>
-
-
-
-
-
-
 
     <footer class = "piedPage">  <!--pied de page -->
-        <table>
-            <tr>   <!-- première ligne-->
-                <td>  <!-- début première cellule -->
-                    <strong>Contact</strong>
-                </td> <!-- fin première cellule -->
-            </tr>  <!--fin première ligne-->
 
-            <tr>
-                <td>Adresse</td>
-            </tr>
+        <div class="footer" >
+            <p id="pied" >[Mentions légales]
+                <table class = plan>
+                <tr>
+                    <td><span> PLAN DU SITE </span></td>
+                </tr>
+                <tr>
+                    <td>Flux</td>
+                </tr>
+                <tr>
+                    <td>Concept</td>
+                </tr>
+                <tr>
+                    <td>Projets</td>
+                </tr>
+                <tr>
+                    <td>Equipe</td>
+                </tr>
+                <tr>
+                    <td>Histoire</td>
+                </tr>
+                </table>
 
-            <tr>
-                <td>Téléphone</td>
-            </tr>
-
-            <tr>
-                <td><a href = "mailto:elodielucien@gmail.com">Nous écrire</a></td>
-            </tr>
-
-        </table>
+            </p>
+        </div>
 
     </footer>
 
 
 {% endblock %}
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"> </script>
+    <script type="text/javascript">
+
+        //fonction permettera de changer la photo
+        function changePhoto(source)
+        {
+            //récupérer l'emplacement pour afficher la photo lors du clique
+            var ind= document.getElementsByClassName("maPhoto")[0];
+
+            //affecter la source de la photo cliquée
+            ind.src=source;
+        }
+
+        //les fonctions qui permetteront de changer les informations selon chaque personne dans la photo
+        function changeTextPicture1(source) {
+            document.getElementById("mesInformations").innerHTML="Hello my name's mariam";
+        }
+
+        function changeTextPicture2(source) {
+            document.getElementById("mesInformations").innerHTML="Hello my name's houda";
+        }
+
+        function changeTextPicture3(source) {
+            document.getElementById("mesInformations").innerHTML="Hi I am Jack";
+        }
+
+        function changeTextPicture4(source) {
+            document.getElementById("mesInformations").innerHTML="Alright alright";
+        }
+
+        function changeTextPicture5(source) {
+            document.getElementById("mesInformations").innerHTML="NO NO NO NO";
+        }
+
+        function changeTextPicture6(source) {
+            document.getElementById("mesInformations").innerHTML="HAHAHAHA OK I AM WRITING THS JUST TO PRESENT MYSELF ";
+        }
+
+        function changeTextPicture7(source) {
+            document.getElementById("mesInformations").innerHTML="I m happy to be one of you, your amazing team, I am honoured, because I was always obsessed with ocean , ocean is my home";
+        }
+
+        function changeTextPicture8(source) {
+            document.getElementById("mesInformations").innerHTML="I am  the boss";
+        }
+
+        //les fonctions qui permetteront de changer le paragraphe selon l'icone cliqué [ partie cycle de fonctionnement ]
+        function changeTextCamera()
+        {
+            document.getElementById("cycleInformation").innerHTML="I am a camera";
+        }
+
+        function changeTextCorail() {
+            document.getElementById("cycleInformation").innerHTML="Du blabla";
+        }
+
+        function changeTextDiffusion() {
+            document.getElementById("cycleInformation").innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed " +
+                "do eiusmod " +
+                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc" +
+                "o laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess" +
+                "e cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui offi" +
+                "cia deserunt mollit anim id est laborum.";
+        }
+
+        function changeTextConscience() {
+            document.getElementById("cycleInformation").innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed " +
+                "do eiusmod " +
+                "tempor incididunt ut labore ";
+        }
+
+        function changeTextDeveloppement() {
+            document.getElementById("cycleInformation").innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed " +
+                "do eiusmod " +
+                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc" +
+                "o laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess" +
+                "e cillum dolore eu fugiat nulla pariat";
+        }
+
+        function changeTextFinancement() {
+            document.getElementById("cycleInformation").innerHTML="Du blabla";
+        }
+    </script>
+{% endblock %}
 
 
 

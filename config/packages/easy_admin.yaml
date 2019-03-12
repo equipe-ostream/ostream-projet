@@ -1,0 +1,265 @@
+easy_admin:
+    site_name: 'Ostream'
+    formats:
+        datetime: 'd/m/Y à H\hi e'
+        date: 'd/m/Y'
+        time: 'H\hi e'
+    show:
+        actions: ['-delete']
+    edit:
+        actions: ['-delete']
+    user:
+        display_name: true
+        display_avatar: true
+        name_property_path: 'nom'
+    design:
+        brand_color: '#6A6EE6'
+    entities:
+        Admin:
+            class: App\Entity\Admin
+            list:
+                fields:
+                    - id
+                    - { property: 'nom', icon: 'user' }
+                    - { property: 'email', css_class: 'input-large' }
+                    - { property: 'adresse'}
+                    - { property: 'telephone' }
+            form:
+                fields:
+                    - id
+                    - { property: 'nom', icon: 'user' }
+                    - { property: 'email', css_class: 'input-large' }
+                    - { property: 'adresse'}
+                    - { property: 'telephone' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'nom', icon: 'customer' }
+                    - { property: 'email'}
+                    - { property: 'username'}
+                    - { property: 'password'}
+                    - { property: 'adresse', type_options: { required: false } }
+                    - { property: 'telephone', type_options: { required: false } }
+            edit:
+                fields:
+                    - '-id'
+                    - { property: 'nom',}
+                    - { property: 'email'}
+                    - { property: 'username'}
+                    - { property: 'adresse', type_options: { required: false } }
+                    - { property: 'telephone', type_options: { required: false } }
+        Utilisateur:
+            class: App\Entity\Utilisateur
+            list:
+                fields:
+                    - id
+                    - { property: 'nom', icon: 'user' }
+                    - { property: 'email', css_class: 'input-large' }
+                    - { property: 'adresse'}
+                    - { property: 'telephone' }
+                    - { property: 'preferences' }
+            form:
+                fields:
+                    - id
+                    - { property: 'nom', icon: 'user' }
+                    - { property: 'email', css_class: 'input-large' }
+                    - { property: 'adresse'}
+                    - { property: 'telephone' }
+                    - { property: 'preferences' }
+                    - { property: 'role' , type: 'choice', type_options: {choices: {'ROLE_USER':'ROLE_USER', 'ROLE_ENTREPRISE':'ROLE_ENTREPRISE'}}}
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'nom', icon: 'customer' }
+                    - { property: 'email'}
+                    - { property: 'username'}
+                    - { property: 'password'}
+                    - { property: 'adresse', type_options: { required: false } }
+                    - { property: 'telephone', type_options: { required: false } }
+                    - { property: 'preferences' }
+                    - { property: 'role' , type: 'choice', type_options: {choices: {'ROLE_USER':'ROLE_USER', 'ROLE_ENTREPRISE':'ROLE_ENTREPRISE'}}}
+            edit:
+                fields:
+                    - '-id'
+                    - { property: 'nom',}
+                    - { property: 'email'}
+                    - { property: 'username'}
+                    - { property: 'adresse', type_options: { required: false } }
+                    - { property: 'telephone', type_options: { required: false } }
+                    - { property: 'preferences' }
+                    - { property: 'role' , type: 'choice', type_options: {choices: {'ROLE_USER':'ROLE_USER', 'ROLE_ENTREPRISE':'ROLE_ENTREPRISE'}}}
+        Categorie:
+            class: App\Entity\Categorie
+            form:
+                fields:
+                    - id
+                    - { property: 'titre', icon: 'user' }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'titre', type_options: { required: false } }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+            edit:
+                fields:
+                    - '-id'
+                    - { property: 'titre', icon: 'customer' }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+        Article:
+            class: App\Entity\Article
+            form:
+                fields:
+                    - id
+                    - { property: 'titre'}
+                    - { property: 'contenu', type: 'textarea' }
+                    - { property: 'date_creation', type: 'date' }
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'titre', label: 'Mon titre'}
+                    - { property: 'admin', label: 'Auteur'}
+                    - { property: 'contenu', type: 'textarea', label: 'Mon contenu' }
+                    - { property: 'date_creation', type: 'date', label: 'Date de creation' }
+                    - { property: 'categorie', label: 'Categories' }
+            edit:
+                fields:
+                    - '-id'
+                    - { property: 'titre', label: 'Mon titre' }
+                    - { property: 'admin', label: 'Auteur'}
+                    - { property: 'contenu', label: 'Mon contenu' }
+                    - { property: 'categorie', label: 'Categories'}
+        Live:
+            class: App\Entity\Live
+            form:
+                fields:
+                - id
+                - { property: 'ocean'}
+                - { property: 'resolution'}
+                - { property: 'pays'}
+            new:
+                fields:
+                - '-id'
+                - { property: 'ocean'}
+                - { property: 'resolution'}
+                - { property: 'pays'}
+            edit:
+                fields:
+                - '-id'
+                - { property: 'ocean'}
+                - { property: 'resolution'}
+                - { property: 'pays'}
+        Formules:
+            class: App\Entity\Formules
+            form:
+                fields:
+                - id
+                - { property: 'prix'}
+                - { property: 'connection'}
+                - { property: 'date_creation', type: 'date' }
+            new:
+                fields:
+                - '-id'
+                - { property: 'prix'}
+                - { property: 'connection'}
+                - { property: 'dispositif'}
+                - { property: 'date_creation', type: 'date' }
+            edit:
+                fields:
+                - '-id'
+                - { property: 'prix'}
+                - { property: 'connection'}
+                - { property: 'dispositif'}
+                - { property: 'date_creation', type: 'date' }
+        Dispositif:
+            class: App\Entity\Dispositif
+            form:
+                fields:
+                - id
+                - { property: 'nom'}
+                - { property: 'model'}
+                - { property: 'date_creation', type: 'date' }
+            new:
+                fields:
+                - '-id'
+                - { property: 'nom'}
+                - { property: 'model'}
+                - { property: 'live'}
+                - { property: 'date_creation', type: 'date' }
+            edit:
+                fields:
+                - '-id'
+                - { property: 'nom'}
+                - { property: 'model'}
+                - { property: 'live'}
+                - { property: 'date_creation', type: 'date' }
+        Don:
+            class: App\Entity\Don
+            list:
+                fields:
+                - id
+                - { property: 'utilisateur', label: 'Utilisateur'}
+                - { property: 'valeur'}
+                - { property: 'type'}
+        Abonnement:
+            class: App\Entity\Abonnement
+            form:
+                fields:
+                - id
+                - { property: 'utilisateur'}
+                - { property: 'formules'}
+                - { property: 'date_creation', type: 'date' }
+            new:
+                fields:
+                - '-id'
+                - { property: 'utilisateur'}
+                - { property: 'formules'}
+                - { property: 'date_creation', type: 'date' }
+            edit:
+                fields:
+                - '-id'
+                - { property: 'utilisateur'}
+                - { property: 'formules'}
+                - { property: 'date_creation', type: 'date' }
+        Preferences:
+            class: App\Entity\Preferences
+            form:
+                fields:
+                    - id
+                    - { property: 'activeModeHorsligne'}
+                    - { property: 'resolution'}
+                    - { property: 'tempsAttenteAvantDiffusion'}
+                    - { property: 'fondEcran'}
+            new:
+                fields:
+                    - '-id'
+                    - { property: 'activeModeHorsligne'}
+                    - { property: 'resolution'}
+                    - { property: 'tempsAttenteAvantDiffusion'}
+                    - { property: 'fondEcran'}
+            edit:
+                fields:
+                    - '-id'
+                    - { property: 'activeModeHorsligne'}
+                    - { property: 'resolution'}
+                    - { property: 'tempsAttenteAvantDiffusion'}
+                    - { property: 'fondEcran'}
+        Systeme:
+            class: App\Entity\Systeme
+            form:
+                fields:
+                    - id
+                    - { property: 'blockProjet', type: 'textarea'}
+                    - { property: 'blockEquipe', type: 'textarea'}
+                    - { property: 'blockFlux', type: 'textarea'}
+            new:
+                fields:
+                - '-id'
+                - { property: 'blockProjet', type: 'textarea'}
+                - { property: 'blockEquipe', type: 'textarea'}
+                - { property: 'blockFlux', type: 'textarea'}
+            edit:
+                fields:
+                - '-id'
+                - { property: 'blockProjet', type: 'textarea'}
+                - { property: 'blockEquipe', type: 'textarea'}
+                - { property: 'blockFlux', type: 'textarea'}

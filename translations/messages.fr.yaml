@@ -1,0 +1,7 @@
+form:
+    user:
+        email: 'Email'
+        nom: 'Nom'
+        password: 'Mot de passe'
+        passwordConfirm: 'Confirmation du mot de passe'
+        enregistrer: 'Enregistrer'

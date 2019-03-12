@@ -33,6 +33,23 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/admin/login", name="login_admin", methods={"GET", "POST"})
+     * @param AuthenticationUtils $authUtils
+     * @return Response
+     */
+    public function adminLogin(Request $request, AuthenticationUtils $authUtils): Response
+    {
+        $form = $this->createForm(LoginType::class, [
+            '_username' => $authUtils->getLastUsername(),
+        ]);
+
+        return $this->render('security/login_admin.html.twig', [
+            'error' => $authUtils->getLastAuthenticationError(),
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/register", name="register", methods={"GET","POST"})
      * @param Request $request
      * @param SecurityManager $securityManager
@@ -55,6 +72,14 @@ class SecurityController extends AbstractController
         return $this->render('security/register.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/user/logout", name="logout_user")
+     * @Route("/admin/logout", name="logout_admin")
+     */
+    public function logout()
+    {
     }
 
 }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,29 @@ class Live
      * @ORM\Column(type="string", length=255)
      */
     private $pays;
+
+    /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Dispositif", mappedBy="live", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $dispositif;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dispositif = new ArrayCollection();
+    }
+
+    /**
+     * return mixed
+     */
+    public function __toString()
+    {
+        return $this->ocean;
+    }
 
     public function getId(): ?int
     {

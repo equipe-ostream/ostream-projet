@@ -30,31 +30,29 @@ class RegisterType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => [
                     'placeholder' => 'form.user.email',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('nom', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'nom',
-                ]
-            ])
-            ->add('telephone', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'phone',
-                ]
-            ])
-            ->add('adresse', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'adresse',
+                    'placeholder' => 'form.user.nom',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'invalid_message' => 'form.user.messagePassword',
-                'first_options'  => array('label' => 'register.password', 'attr' => ['placeholder' => 'form.user.password']),
-                'second_options' => array('label' => 'register.passwordConfirm', 'attr' => ['placeholder' => 'register.passwordConfirm']),
+                'invalid_message' => 'Le mot de passe doit etre identique',
+                'first_options'  => array('label' => 'form.user.password', 'attr' => [
+                    'placeholder' => 'form.user.password',
+                    'class' => 'form-control'
+                ]),
+                'second_options' => array('label' => 'form.user.passwordConfirm', 'attr' => [
+                    'placeholder' => 'form.user.passwordConfirm',
+                    'class' => 'form-control'
+                ]),
             ))
             ->add('submit', SubmitType::class, [
-                'label' => 'register.inscription',
+                'label' => 'form.user.enregistrer',
                 'attr' => [
                     'class' => 'btn btn-primary',
                 ]

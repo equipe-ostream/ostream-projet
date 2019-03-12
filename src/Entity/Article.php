@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -22,24 +25,30 @@ class Article
     private $titre;
 
     /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
     private $contenu;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date")
      */
-    private $type;
+    private $dateCreation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", cascade={"persist"}, inversedBy="article")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
-    private $auteur;
+    private $categorie;
+
+    /**
+     * @var Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin", cascade={"persist"}, inversedBy="article")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $admin;
 
     public function getId(): ?int
     {
@@ -58,14 +67,14 @@ class Article
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDateCreation(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->dateCreation;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
-        $this->date = $date;
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }
@@ -75,34 +84,41 @@ class Article
         return $this->contenu;
     }
 
-    public function setContenu(string $contenu): self
+    public function setContenu(string $contenu): void
     {
         $this->contenu = $contenu;
-
-        return $this;
     }
 
-    public function getType(): ?string
+    /**
+     * @param Categorie $categorie
+     */
+    public function setCategorie(?Categorie $categorie): void
     {
-        return $this->type;
+        $this->categorie = $categorie;
     }
 
-    public function setType(?string $type): self
+    /**
+     * @return Categorie
+     */
+    public function getCategorie(): ?Categorie
     {
-        $this->type = $type;
-
-        return $this;
+        return $this->categorie;
     }
 
-    public function getAuteur(): ?string
+    /**
+     * @param Admin $admin
+     */
+    public function setAdmin(Admin $admin): void
     {
-        return $this->auteur;
+        $this->admin = $admin;
     }
 
-    public function setAuteur(string $auteur): self
+    /**
+     * @return Admin|null
+     */
+    public function getAdmin(): ?Admin
     {
-        $this->auteur = $auteur;
-
-        return $this;
+        return $this->admin;
     }
+
 }

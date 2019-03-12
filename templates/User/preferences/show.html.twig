@@ -1,0 +1,30 @@
+{% extends 'baseDashboard.html.twig' %}
+
+{% block title %}Preferences{% endblock %}
+
+{% block body %}
+    <h1>Preferences</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ActiveModeHorsligne</th>
+                <td>{{ preference.activeModeHorsligne ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Resolution</th>
+                <td>{{ preference.resolution }}</td>
+            </tr>
+            <tr>
+                <th>TempsAttenteAvantDiffusion</th>
+                <td>{{ preference.tempsAttenteAvantDiffusion }}</td>
+            </tr>
+            <tr>
+                <th>FondEcran</th>
+                <td>{{ preference.fondEcran }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('preferences_edit', {'id': app.user.id}) }}" class="btn btn-primary"><i class="fa fa-edit"></i>edit</a>
+{% endblock %}

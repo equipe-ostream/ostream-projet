@@ -16,6 +16,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Utilisateur  implements UserInterface
 {
+    const STATUS_ENABLED = 'enabled';
+    const STATUS_DISABLED = 'disabled';
+
     use DeletableTrait;
 
     /**
@@ -36,7 +39,7 @@ class Utilisateur  implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $adresse;
 
@@ -51,7 +54,7 @@ class Utilisateur  implements UserInterface
     private $statut;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $telephone;
 
@@ -63,11 +66,9 @@ class Utilisateur  implements UserInterface
     private $username;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="roles", type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
-    private $roles;
+    private $role;
 
     /**
      * @var \DateTime
@@ -82,6 +83,43 @@ class Utilisateur  implements UserInterface
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Don", mappedBy="utilisateur", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $don;
+
+    /**
+     * @var ArrayCollection|Collection
+     *
+     * @ORM\OneToMany(targetEntity="Abonnement", mappedBy="utilisateur", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $abonnement;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Preferences", cascade={"persist"})
+     */
+    private $preferences;
+
+    public function __construct()
+    {
+        $this->statut = Utilisateur::STATUS_ENABLED;
+        $this->role = 'ROLE_USER';
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->don = new ArrayCollection();
+        $this->abonnement = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return $this->email;
+    }
 
     public function getId(): ?int
     {
@@ -98,13 +136,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $nom
-     * @return Utilisateur
      */
-    public function setNom(string $nom): self
+    public function setNom(string $nom): void
     {
         $this->nom = $nom;
-
-        return $this;
     }
 
     /**
@@ -117,13 +152,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $password
-     * @return Utilisateur
      */
-    public function setPassword(string $password): self
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
     /**
@@ -136,13 +168,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $adresse
-     * @return Utilisateur
      */
-    public function setAdresse(string $adresse): self
+    public function setAdresse(string $adresse): void
     {
         $this->adresse = $adresse;
-
-        return $this;
     }
 
     /**
@@ -155,13 +184,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $email
-     * @return Utilisateur
      */
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -174,13 +200,10 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $statut
-     * @return Utilisateur
      */
-    public function setStatut(string $statut): self
+    public function setStatut(string $statut): void
     {
         $this->statut = $statut;
-
-        return $this;
     }
 
     /**
@@ -193,70 +216,66 @@ class Utilisateur  implements UserInterface
 
     /**
      * @param string $telephone
-     * @return Utilisateur
      */
-    public function setTelephone(string $telephone): self
+    public function setTelephone(string $telephone): void
     {
         $this->telephone = $telephone;
-
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
      * @param string $username
-     * @return Utilisateur
      */
-    public function setUsername(string $username): Utilisateur
+    public function setUsername(string $username): void
     {
         $this->username = $username;
-        return $this;
     }
 
     /**
-     * Set roles
-     *
-     * @param string $roles
-     * @return Utilisateur
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = serialize($roles);
-        return $this;
-    }
-    /**
-     * Get roles
-     *
      * @return string
      */
-    public function getRoles()
+    public function getRole(): ?string
     {
-        return unserialize($this->roles);
+        return $this->role;
     }
 
     /**
-     * @return \DateTime
+     * {@inheritdoc}
      */
-    public function getCreated(): \DateTime
+    public function getRoles(): array
+    {
+        return [$this->role];
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getCreated(): ?\DateTime
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
-     * @return Utilisateur
+     * @param \DateTime|null $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt): Utilisateur
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
-        return $this;
     }
 
     /**
@@ -329,5 +348,21 @@ class Utilisateur  implements UserInterface
     public function supportsClass($class)
     {
         // TODO: Implement supportsClass() method.
+    }
+
+    /**
+     * @param Preferences|null $preferences
+     */
+    public function setPreferences(Preferences $preferences = null)
+    {
+        $this->preferences = $preferences;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreferences()
+    {
+        return $this->preferences;
     }
 }

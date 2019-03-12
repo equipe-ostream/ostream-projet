@@ -2,24 +2,66 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Utilisateur;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\Admin;
+use App\Services\PasswordService;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController;
 
-class AdminController extends AbstractController
+class AdminController extends EasyAdminController
 {
     /**
-     * @Route("/admin", name="dashboard_admin", methods={"GET", "POST"})
-     * @return Response
+     * @var PasswordService
      */
-    public function dashboard_admin(): Response
+    private $passwordService;
+
+    /**
+     * @param PasswordService $passwordService
+     */
+    public function __construct(PasswordService $passwordService)
     {
-        return $this->render('admin/adminDashBoard.html.twig', []);
+        $this->passwordService = $passwordService;
     }
 
-}
+    /**
+     * @param object $entity
+     */
+    protected function updateEntity($entity)
+    {
+        if (!$entity instanceof Admin) {
+            return;
+        }
 
+        if ($entity->getPassword()) {
+            $entity->setPassword($this->passwordService->encode($entity, $entity->getPassword()));
+        }
+
+        $entity->setStatut(Admin::STATUS_ENABLED);
+        $entity->setRole('ROLE_SUPER_ADMIN');
+
+        dump($entity);
+        die;
+
+        parent::updateEntity($entity);
+    }
+
+    /**
+     * @param object $entity
+     */
+    protected function persistEntity($entity)
+    {
+        if (!$entity instanceof Admin) {
+            return;
+        }
+
+        if ($entity->getPassword()) {
+            $entity->setPassword($this->passwordService->encode($entity, $entity->getPassword()));
+        }
+
+        $entity->setStatut(Admin::STATUS_ENABLED);
+        $entity->setRole('ROLE_SUPER_ADMIN');
+
+        dump($entity);
+        die;
+
+        parent::persistEntity($entity);
+    }
+}
